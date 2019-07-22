@@ -1,0 +1,13 @@
+server:
+  port: 1301
+  servlet:
+    context-path: "/mm-risiko"
+
+management:
+  server:
+    port: 1302
+    servlet:
+      context-path: "/"
+
+logging:
+  config: "templates/logback.xml"
