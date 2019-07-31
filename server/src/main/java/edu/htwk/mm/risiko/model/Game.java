@@ -12,5 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Game {
 
-    private String name;
+	private String name;
+	
 }
