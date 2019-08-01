@@ -13,10 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 public class Country {
 	
-	private String name;
-	private String color;
-	private int troops;
-	private List<String> neighborCountrys;
+	private Region region;
+	private List<Region> neighborhood;
 	
 
 }

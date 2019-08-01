@@ -1,0 +1,90 @@
+{ "playerColors": ["red","green","blue","violet"],
+  "continentList": [
+    {
+      "name": "NorthAmerica",
+      "color": "yellow",
+      "troopBonus": 5,
+      "countries": [
+        {
+          "region": "ALASKA",
+          "neighborhood": [
+            "ALBERTA",
+            "NORTH_WEST_TERRETORIES",
+            "KAMCHATKA"
+          ]
+        },
+        {
+          "region": "ALBERTA",
+          "neighborhood": [
+            "ALASKA",
+            "NORTH_WEST_TERRETORIES",
+            "ONTARIO",
+            "WESTERN_STATES"
+          ]
+        },
+        {
+          "region": "NORTH_WEST_TERRETORIES",
+          "neighborhood": [
+            "ALASKA",
+            "ALBERTA",
+            "ONTARIO",
+            "GREENLAND"
+          ]
+        },
+        {
+          "region": "GREENLAND",
+          "neighborhood": [
+            "ONTARIO",
+            "NORTH_WEST_TERRETORIES",
+            "EAST_CANADA",
+            "ICELAND"
+          ]
+        },
+        {
+          "region": "ONTARIO",
+          "neighborhood": [
+            "ALBERTA",
+            "WESTERN_STATES",
+            "EASTERN_STATES",
+            "EAST_CANADA",
+            "GREENLAND"
+          ]
+        },
+        {
+          "region": "EAST_CANADA",
+          "neighborhood": [
+            "ONTARIO",
+            "EASTERN_STATES",
+            "GREENLAND"
+          ]
+        },
+        {
+          "region": "WESTERN_STATES",
+          "neighborhood": [
+            "ALBERTA",
+            "ONTARIO",
+            "EASTERN_STATES",
+            "MIDDLE_AMERICA"
+          ]
+        },
+        {
+          "region": "EASTERN_STATES",
+          "neighborhood": [
+            "ONTARIO",
+            "WESTERN_STATES",
+            "EAST_CANADA",
+            "MIDDLE_AMERICA"
+          ]
+        },
+        {
+          "region": "MIDDLE_AMERICA",
+          "neighborhood": [
+            "WESTERN_STATES",
+            "EASTERN_STATES",
+            "VENEZUELA"
+          ]
+        }
+      ]
+    }
+  ]
+}
