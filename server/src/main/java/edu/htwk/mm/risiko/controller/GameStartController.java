@@ -84,7 +84,6 @@ public class GameStartController {
 		}   
     }
     
-    //TODO Funktioniert nicht - nochmal überprüfen
     @GetMapping(path = "/addPlayer/{name}/{username}/{color}")
     public ResponseEntity<Game> addPlayertoGame(@PathVariable("name") String name,@PathVariable("username") String username,@PathVariable("color") String color){
     	if(StringUtils.isEmpty(name)) {
