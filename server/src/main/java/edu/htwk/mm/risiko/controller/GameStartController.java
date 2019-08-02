@@ -84,6 +84,7 @@ public class GameStartController {
 		}   
     }
     
+    //TODO Funktioniert nicht - nochmal überprüfen
     @GetMapping(path = "/addPlayer/{name}/{username}/{color}")
     public ResponseEntity<Game> addPlayertoGame(@PathVariable("name") String name,@PathVariable("username") String username,@PathVariable("color") String color){
     	if(StringUtils.isEmpty(name)) {
@@ -105,7 +106,7 @@ public class GameStartController {
     
     //TODO: CHECK IF WORKS PROPERLY
     @GetMapping(path = "/removePlayer/{name}/{color}")
-    public ResponseEntity<Game> addPlayertoGame(@PathVariable("name") String name,@PathVariable("color") String color){
+    public ResponseEntity<Game> removePlayerFromGame(@PathVariable("name") String name,@PathVariable("color") String color){
     	if(StringUtils.isEmpty(name)) {
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     	}
@@ -124,7 +125,7 @@ public class GameStartController {
     }
     //TODO:CHECK IF WORKS PROPERLY
     @GetMapping(path = "/startGame/{name}")
-    public ResponseEntity<Game> addPlayertoGame(@PathVariable("name") String name){
+    public ResponseEntity<Game> startGame(@PathVariable("name") String name){
     	if(StringUtils.isEmpty(name)) {
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     	}

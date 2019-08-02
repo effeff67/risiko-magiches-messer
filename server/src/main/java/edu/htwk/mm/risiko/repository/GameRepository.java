@@ -52,10 +52,9 @@ public class GameRepository {
     			return null;
     		} 
     		else {
-    			Game newGame = new Game();
+    			Game newGame = new Game(name,false,false,Arrays.asList(color),Arrays.asList(new Player(username,color)));
     			newGame.setName(name);
     			objectMapper.writeValue(new File("games/"+newGame.getName()+".json"),newGame);
-    			addPlayer(name, username, color);
     			return newGame;
     		}
     	}catch (Exception e) {
@@ -105,10 +104,8 @@ public class GameRepository {
     public Game addPlayer(String gameName,String name, String color) {   	
     	Game game = getGameByName(gameName);
     	try{//TODO Überprüfung ob Farbe bereits im Spiel ist
-        	game.getAllPlayers().add(new Player(name, color));
-        	game.getColorsInGame().add(color);
-        	//TODO add(something)doesn't work -> leads to error
-        	overwriteGame(game);
+    		//TODO Player lässt sich nicht hinzufügen
+        	game.addPlayer(new Player(name,color));
         	return game;
     	}catch (Exception e) {
     		log.error("failed to add player to game {}", gameName, e);
@@ -118,20 +115,8 @@ public class GameRepository {
     
     public Game removePlayer(String gameName,String color) {
     	Game game = getGameByName(gameName);
-    	try {for(int i=0; i<game.getAllPlayers().size();i++) {
-    			if (game.getAllPlayers().get(i).getColor()==color) {
-    				for(int j=0; j<game.getColorsInGame().size();j++) {
-    					if(game.getColorsInGame().get(j)==color) {
-    						game.getColorsInGame().remove(j);
-    					}
-    				}
-    				game.getAllPlayers().remove(i);
-    				overwriteGame(game);
-    				return game;
-    			}
-    		}
-    		log.error("failed due to unvalid color {}",color);
-    		return null;
+    	try {game.removePlayer(color);
+    		return game;
     	}catch (Exception e) {
     		log.error("failed to remove player from game {}", game.getName(), e);
     		return null;
