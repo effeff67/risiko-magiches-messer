@@ -2,6 +2,7 @@
 .idea
 
 server/target
+server/bin
 client/node_modules
 
 .DS_Store
