@@ -13,5 +13,5 @@ import java.util.List;
 public class GameMap {
 
     private List<Continent> continentList;
-    private List<String> playerColors;
+    private List<Color> playerColors;
 }

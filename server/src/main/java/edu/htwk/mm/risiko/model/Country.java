@@ -15,6 +15,6 @@ public class Country {
 	
 	private Region region;
 	private List<Region> neighborhood;
-	
+	private Color holder;
 
 }

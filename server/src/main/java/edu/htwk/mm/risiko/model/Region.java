@@ -12,19 +12,51 @@ public enum Region {
 
     ALASKA("Alaska"),
     ALBERTA("Alberta"),
-    NORTH_WEST_TERRETORIES("Nordwest-Territorium"),
-    GREENLAND("Grönland"),
-    ONTARIO("Ontario"),
     EAST_CANADA("Ostkanada"),
-    WESTERN_STATES("Weststaaten"),
     EASTERN_STATES("Oststaaten"),
+    GREENLAND("Grönland"),
     MIDDLE_AMERICA("Mittelamerika"),
+    NORTH_WEST_TERRETORIES("Nordwest-Territorium"),
+    ONTARIO("Ontario"),
+    WESTERN_STATES("Weststaaten"),
 
+    AFGHANISTAN("Afghanistan"),
+    CHINA("China"),
+    INDIA("Indien"),
+    IRKUTSK("Irkutsk"),
+    JAKUTIEN("Jakutien"),
+    JAPAN("Japan"),
     KAMCHATKA("Kamtschatka"),
-
+    MIDDLE_EAST("Naher Osten"),
+    MONGOLIA("Mongolei"),
+    SIBIRIA("Sibirien"),
+    SOUTHEAST_ASIA("Südostasien"),
+    URAL("Ural"),
+      
+    GREAT_BRITAIN("Großbritannien"),
     ICELAND("Island"),
+    NORTHERN_EUROPE("Nordeuropa"),
+    RUSSIA("Russland"),
+    SKANDINAVIA("Skandinavien"),
+    SOUTHERN_EUROPE("Südeuropa"),
+    WESTERN_EUROPE("Westeuropa"),
 
-    VENEZUELA("Venezuela")
+    ARGENTINA("Argentinien"),
+    BRAZIL("Brasilien"),
+    PERU("Peru"),
+    VENEZUELA("Venezuela"),
+    
+    CENTRAL_AFRICA("Zentralafrika"),
+    EASTERN_AFRICA("Ostafrika"),
+    EGYPT("Ägypten"),
+    MADAGASCAR("Madagaskar"),
+    NORTHERN_AFRICA("Nordafrika"),
+    SOUTHERN_AFRICA("Südafrika"),
+    
+    EASTERN_AUSTRALIA("Ostraustralien"),
+    GUINEA("Neuguinea"),
+    INDONESIA("Indonesien"),
+    WESTERN_AUSTRALIA("Westaustralien")
     ;
 
     private String name;
