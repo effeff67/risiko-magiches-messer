@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 public class GameMap {
 
-    private List<Continent> continentList;
+    private String name;
     private List<Color> playerColors;
+    private List<Continent> continentList;
 }

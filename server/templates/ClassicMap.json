@@ -1,4 +1,6 @@
-{ "playerColors": ["orange","green","blue","violet", "yellow"],
+{
+  "name": "ClassicMap",
+  "playerColors": ["red","green","blue","violet", "yellow"],
   "continentList": [
     {
       "name": "Nordamerika",
@@ -193,7 +195,7 @@
             "SOUTHERN_EUROPE",
             "NORTHERN_AFRICA"
           ]
-        }   
+        }
       ]
     },
     {
