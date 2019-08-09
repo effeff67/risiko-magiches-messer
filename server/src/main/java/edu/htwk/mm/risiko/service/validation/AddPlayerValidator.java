@@ -3,7 +3,7 @@ package edu.htwk.mm.risiko.service.validation;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Status;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
-import edu.htwk.mm.risiko.model.api.GameCommandRequest;
+import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.service.execution.AddPlayerExec;
 import edu.htwk.mm.risiko.service.execution.CommandExecutor;
 import edu.htwk.mm.risiko.service.execution.InvalidCommandExec;
@@ -11,9 +11,9 @@ import edu.htwk.mm.risiko.service.execution.InvalidCommandExec;
 public class AddPlayerValidator implements CommandValidator {
 
     GameChangeResponse response;
-    GameCommandRequest command;
+    GameChangeRequest command;
 
-    public AddPlayerValidator(GameCommandRequest command) {
+    public AddPlayerValidator(GameChangeRequest command) {
         this.command = command;
         this.response = new GameChangeResponse();
     }

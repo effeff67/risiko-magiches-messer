@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public enum GameCommand {
 
+    ADD_GAME("addGame"),
     ADD_PLAYER("addPlayer"),
     START_GAME("startGame");
 

@@ -1,10 +1,12 @@
 package edu.htwk.mm.risiko.model;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Player {
     private String name;
     private Color color;

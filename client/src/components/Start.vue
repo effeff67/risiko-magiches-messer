@@ -29,8 +29,8 @@
                     <option v-for="color in newGameColors()" v-bind:value="color">{{ color }}</option>
                 </select>
             </div>
-            <div v-if="playerColor && playerName && newGameName">
-                <button ></button>
+            <div v-if="playerColor && playerName && (newGameName || selectedGameName)">
+                <input type="submit" value="Abschicken"/>
             </div>
 
         </form>
@@ -39,6 +39,9 @@
 </template>
 
 <script>
+import { GameChangeRequest } from '@/shared/model/GameChangeRequest'
+import { Player } from '@/shared/model/Player'
+
 export default {
     name: 'Start',
     data: function () {
@@ -61,24 +64,40 @@ export default {
         })[0].playerColors;
       },
       handleSubmit: function (e) {
+        let vm = this
         this.failure = ''
-        if (this.selectedGameName && this.playerName.trim()) {
+        if(this.newGameName && this.playerName && this.playerColor) {
+          let requestBody = JSON.stringify(new GameChangeRequest(
+            new Player(this.playerName, this.playerColor),
+            'addGame',
+            { conquerTheWorld: this.newGameConquerTheWorld }
+          ))
+          console.log(requestBody)
+          fetch('http://localhost:1301/mm-risiko/games/' + this.newGameName, {
+            method: 'PUT',
+            headers: { 'Content-type': 'application/json' },
+            body: requestBody
+          }).then( response => {
+            response.json().then( json => {
+              console.log(JSON.stringify(json))
+            })
+          })
+        } else if (this.selectedGameName && this.playerName.trim()) {
+          let requestBody = JSON.stringify(new GameChangeRequest(new Player( vm.playerName, vm.playerColor ), 'addPlayer'))
+          console.log(requestBody)
+          /*
           fetch('http://localhost:1301/mm-risiko/games/' + this.selectedGameName + '/player', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify({ player: this.playerName })
+            body: requestBody
           })
+          */
         } else {
           this.failure = 'Bitte vollständig ausfüllen!'
         }
       }
     },
     created: function () {
-      let zahlen = [3,4,5,6,7]
-      let k = zahlen.filter((zahl) => {
-        if(zahl > 5)return zahl
-      });
-      console.log(k)
       let vm = this
       fetch('http://localhost:1301/mm-risiko/games').then(response => {
         response.json().then(json => {

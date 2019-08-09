@@ -3,15 +3,15 @@ package edu.htwk.mm.risiko.service.execution;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Status;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
-import edu.htwk.mm.risiko.model.api.GameCommandRequest;
+import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 
 public class StartGameExec implements CommandExecutor {
 
     private final Game game;
-    private final GameCommandRequest command;
+    private final GameChangeRequest command;
     private final GameChangeResponse response;
 
-    public StartGameExec(Game game, GameCommandRequest command, GameChangeResponse response) {
+    public StartGameExec(Game game, GameChangeRequest command, GameChangeResponse response) {
         this.game = game;
         this.command = command;
         this.response = response;
