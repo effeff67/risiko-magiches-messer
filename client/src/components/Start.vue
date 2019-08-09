@@ -1,0 +1,101 @@
+<template>
+    <div id="Start">
+        <form @submit.prevent="handleSubmit">
+            <div>
+                <input v-model="playerName" id="playerName"/><br/>
+                <label for="playerName">Dein Spieler name</label>
+            </div>
+            <div v-if="selectableGames.length > 0">
+                <select v-model="selectedGameName" id="gameName">
+                    <option disabled value="--">Wähle ein Spiel, um einzusteigen</option>
+                    <option v-for="game in selectableGames" v-bind:value="game.name"> {{ game.name }}</option>
+                </select><br/>
+                <label for="gameName">Wähle ein Spiel</label>
+            </div>
+            <div>
+                <p>Neues Spiel?</p>
+                <select v-model="newGameMapName">
+                    <option disabled value="--">Wähle eine Map zum Spielen!</option>
+                    <option v-for="map in newGameMaps" v-bind:value="map.name"> {{ map.name }}</option>
+                </select><br/>
+                <input v-model="newGameName" id="newGameName"/><br/>
+                <label for="newGameName">Spielname (ohne Leerzeichen)</label><br/>
+                <input type="checkbox" v-model="newGameConquerTheWorld" value="true" id="conquerTheWorld"/><br/>
+                <label for="conquerTheWorld">Global Mission Welteroberung für alle!</label>
+            </div>
+            <div v-if="newGameMapName">
+                <select v-model="playerColor" id="playerColor">
+                    <option disabled value="--">Wähle eine Farbe zum Spielen!</option>
+                    <option v-for="color in newGameColors()" v-bind:value="color">{{ color }}</option>
+                </select>
+            </div>
+            <div v-if="playerColor && playerName && newGameName">
+                <button ></button>
+            </div>
+
+        </form>
+        <p class="error">{{ failure }}</p>
+    </div>
+</template>
+
+<script>
+export default {
+    name: 'Start',
+    data: function () {
+      return {
+        playerName: '',
+        playerColor: '',
+        selectedGameName: '',
+        selectableGames: [],
+        failure: '',
+        newGameName: '',
+        newGameConquerTheWorld: false,
+        newGameMaps: [],
+        newGameMapName: '',
+      }
+    },
+    methods: {
+      newGameColors() {
+        return this.newGameMaps.filter((map) => {
+          if(map.name === this.newGameMapName) return map;
+        })[0].playerColors;
+      },
+      handleSubmit: function (e) {
+        this.failure = ''
+        if (this.selectedGameName && this.playerName.trim()) {
+          fetch('http://localhost:1301/mm-risiko/games/' + this.selectedGameName + '/player', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ player: this.playerName })
+          })
+        } else {
+          this.failure = 'Bitte vollständig ausfüllen!'
+        }
+      }
+    },
+    created: function () {
+      let zahlen = [3,4,5,6,7]
+      let k = zahlen.filter((zahl) => {
+        if(zahl > 5)return zahl
+      });
+      console.log(k)
+      let vm = this
+      fetch('http://localhost:1301/mm-risiko/games').then(response => {
+        response.json().then(json => {
+          console.log(JSON.stringify(json))
+          vm.selectableGames = json.games;
+        });
+      });
+      fetch('http://localhost:1301/mm-risiko/maps').then(response => {
+        response.json().then(json => {
+          console.log(JSON.stringify(json))
+          vm.newGameMaps = json;
+        });
+      });
+    }
+}
+</script>
+
+<style scoped>
+
+</style>

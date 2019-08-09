@@ -1,0 +1,30 @@
+info:
+  build:
+    name: "Risiko App Server"
+    version: "0.0.1-SNAPSHOT"
+    buildTime: "2019-08-09T16:28:41Z"
+    revision: "@git.commit.id@"
+
+
+server:
+  error:
+    whitelabel:
+      enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  jackson:
+    time-zone: UTC
+    default-property-inclusion: non_null
+    serialization:
+      indent-output: true
+      order-map-entries-by-keys: true
+      write-dates-as-timestamps: false
