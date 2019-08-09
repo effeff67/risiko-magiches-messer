@@ -29,6 +29,9 @@
                     <option v-for="color in newGameColors()" v-bind:value="color">{{ color }}</option>
                 </select>
             </div>
+            <div v-if="playerColor && playerName && newGameName">
+                <button ></button>
+            </div>
 
         </form>
         <p class="error">{{ failure }}</p>

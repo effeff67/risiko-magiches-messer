@@ -2,7 +2,6 @@ package edu.htwk.mm.risiko.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +19,7 @@ public class Game {
     private boolean conquerWorld;
 	private boolean started;
 	private List<Player> players;
+	private Color activePlayer;
 
     public Game(String gameName, Player player, boolean conquerTheWorld) {
         this.name = gameName;

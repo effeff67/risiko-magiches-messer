@@ -5,8 +5,14 @@ import edu.htwk.mm.risiko.model.Status;
 
 public class InvalidCommandExec implements CommandExecutor {
 
+    private GameChangeResponse response;
+
+    public InvalidCommandExec(GameChangeResponse response) {
+        this.response = response;
+    }
+
     @Override
     public GameChangeResponse execute() {
-        return new GameChangeResponse(Status.ERROR, "invalid Command");
+        return response;
     }
 }
