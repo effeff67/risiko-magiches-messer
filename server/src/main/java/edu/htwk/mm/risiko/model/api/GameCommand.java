@@ -12,7 +12,15 @@ public enum GameCommand {
 
     ADD_GAME("addGame"),
     ADD_PLAYER("addPlayer"),
-    START_GAME("startGame");
+    ATTACK_REGION("attackRegion"),
+    DRAW_CARD("drawCard"),
+    MOVE_TROOPS("moveTroops"),
+    PLACE_TROOP("placeTroop"),
+    PLACE_TROOPS("placeTroops"),
+    RECRUIT_TROOPS("recruitTroops"),
+    START_GAME("startGame"),
+    TRADE_CARDS("tradeCards");
+
 
     @JsonValue
     private String commandName;

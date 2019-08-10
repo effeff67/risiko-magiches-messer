@@ -18,7 +18,8 @@ public class AddPlayerExec implements CommandExecutor {
 
     @Override
     public GameChangeResponse execute() {
-
+        game.getPlayers().add(command.getPlayer());
+        response.setMessage("Spieler erfolgreich hinzugefügt.");
         return response;
     }
 }

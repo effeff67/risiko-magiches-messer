@@ -1,6 +1,0 @@
-edu\htwk\mm\risiko\service\validation\PlaceTroopsValidator.class
-edu\htwk\mm\risiko\service\execution\AttackRegionExec.class
-edu\htwk\mm\risiko\service\validation\AttackRegionValidator.class
-edu\htwk\mm\risiko\service\execution\RecruitTroopsExec.class
-edu\htwk\mm\risiko\service\execution\PlaceTroopsExec.class
-edu\htwk\mm\risiko\service\validation\RecruitTroopsValidator.class

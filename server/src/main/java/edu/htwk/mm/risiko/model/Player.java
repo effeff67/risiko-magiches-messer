@@ -10,9 +10,10 @@ import lombok.Setter;
 public class Player {
     private String name;
     private Color color;
-	private Mission mission;
+	private Missions mission;
 	private int inactiveTroops;
 	private CardsStack cards;
+	private boolean conquered = false;
 
 	public Player (String name, Color color) {
 		this.name = name;

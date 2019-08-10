@@ -21,6 +21,9 @@ public class Game {
 	private List<Player> players;
 	private Color activePlayer;
 	private GameMap gameMap;
+	private List<Missions> missions;
+	private CardsStack cardsStack;
+	private int setCount;
 
     public Game(String gameName, Player player, boolean conquerTheWorld) {
         this.name = gameName;
