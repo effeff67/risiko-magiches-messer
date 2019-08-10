@@ -25,6 +25,7 @@ public class StartGameExec implements CommandExecutor {
         Collections.shuffle(game.getPlayers());
         game.setActivePlayer(game.getPlayers().get(0).getColor());
         for(int i = 0; i < game.getPlayers().size(); i++){
+            // game.getPlayers().get(i).setMission();
             // todo missionen verteilbar machen (enum ergänzen)
         }
         switch (game.getPlayers().size()) {

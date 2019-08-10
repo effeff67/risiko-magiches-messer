@@ -20,7 +20,14 @@ public class AddPlayerValidator implements CommandValidator {
 
     @Override
     public CommandExecutor validate(Game game) {
-        if(game.getPlayers().size() < 5 ) { // todo && chosen color is not already used
+        boolean used = false;
+        for(int i = 0; i < game.getPlayers().size(); i++){
+            if(command.getPlayer().getColor() ==  game.getPlayers().get(i).getColor()){
+                used = true;
+            }
+        }
+        if(game.getPlayers().size() < 5 && used == false )
+                {
             return new AddPlayerExec(game, command, response);
         } else {
             response.setStatus(Status.ERROR);
