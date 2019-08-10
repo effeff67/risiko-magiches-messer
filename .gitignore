@@ -2,6 +2,8 @@
 .idea
 
 server/target
+server/bin
+server/games
 client/node_modules
 
 .DS_Store
@@ -13,8 +15,6 @@ client/.env.*.local
 
 # Log files
 client/npm-debug.log*
-client/yarn-debug.log*
-client/yarn-error.log*
 
 # Editor directories and files
 .vscode

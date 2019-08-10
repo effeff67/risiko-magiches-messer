@@ -28,6 +28,6 @@ public class Game {
         players.add(player);
         this.conquerWorld = conquerTheWorld;
         this.started = false;
-        this.gameMap = new GameMap();
     }
+
 }

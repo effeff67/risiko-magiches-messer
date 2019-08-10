@@ -2,15 +2,15 @@ package edu.htwk.mm.risiko.service.execution;
 
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
-import edu.htwk.mm.risiko.model.api.GameCommandRequest;
+import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 
 public class AddPlayerExec implements CommandExecutor {
 
     private Game game;
-    private GameCommandRequest command;
+    private GameChangeRequest command;
     private GameChangeResponse response;
 
-    public AddPlayerExec(Game game, GameCommandRequest command, GameChangeResponse response) {
+    public AddPlayerExec(Game game, GameChangeRequest command, GameChangeResponse response) {
         this.game = game;
         this.command = command;
         this.response = response;

@@ -5,9 +5,11 @@ import edu.htwk.mm.risiko.model.Color;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.model.GameList;
 import edu.htwk.mm.risiko.model.Game;
-import edu.htwk.mm.risiko.model.api.GameCommandRequest;
+import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.Status;
 import edu.htwk.mm.risiko.service.GameService;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.LinkedHashMap;
 
 @Slf4j
 @CrossOrigin(origins = "*", maxAge = 3600L)
@@ -67,16 +71,15 @@ public class GameController {
 
     @PutMapping(path = "/{name}")
     public ResponseEntity<GameChangeResponse> openGame(@PathVariable("name") String gameName,
-                                                       @RequestParam("playerName") String playerName,
-                                                       @RequestParam("playerColor") Color color,
-                                                       @RequestParam("conquerTheWorld") boolean conquerTheWorld) {
+                                                       @RequestBody() GameChangeRequest request) {
         try {
-            Game game = gameService.addGame(gameName, playerName, color, conquerTheWorld);
+            Game game = gameService.addGame(gameName, request.getPlayer(), new AddGameDetails(request.getCommandDetails()).conquerTheWorld);
             if (game != null) {
                 return ResponseEntity.ok(new GameChangeResponse(Status.SUCCESS));
             }
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new GameChangeResponse(Status.ERROR, "Failed to create game"));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
 
@@ -85,7 +88,7 @@ public class GameController {
 
     @PostMapping(path = "/{name}")
     public ResponseEntity<GameChangeResponse> changeGame(@PathVariable("name") String gameName,
-                                                         @RequestBody() GameCommandRequest gameCommand) {
+                                                         @RequestBody() GameChangeRequest gameCommand) {
         try {
             GameChangeResponse response = gameService.changeGame(gameName, gameCommand);
             if (response.getStatus() == Status.SUCCESS) {
@@ -116,7 +119,14 @@ public class GameController {
         }
     }
 
+    @Getter @Setter
+    static class AddGameDetails {
+        private boolean conquerTheWorld;
 
+        public AddGameDetails(LinkedHashMap<String, Boolean> object) {
+            conquerTheWorld = object.get("conquerTheWorld");
+        }
+    }
 }
 
 

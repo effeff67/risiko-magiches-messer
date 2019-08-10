@@ -3,7 +3,7 @@ package edu.htwk.mm.risiko.service;
 
 import edu.htwk.mm.risiko.model.Color;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
-import edu.htwk.mm.risiko.model.api.GameCommandRequest;
+import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.GameList;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Player;
@@ -26,23 +26,23 @@ public class GameService {
     public GameList getOpenGames() {
         return new GameList(gameRepository.getAllOpenGames());
     }
-    
+
     public Game getGame(String name) {
     	if(!StringUtils.isEmpty(name)) {
     		return gameRepository.getGameByName(name);
     	}
     	return null;
     }
-    
-    public Game addGame(String gameName, String userName, Color color, boolean conquerTheWorld) {
 
-		Game newGame = new Game(gameName, new Player(userName, color), conquerTheWorld);
+    public Game addGame(String gameName, Player player, boolean conquerTheWorld) {
+
+		Game newGame = new Game(gameName, player, conquerTheWorld);
 		if(gameRepository.addGame(newGame)){
 			return newGame;
     	}
     	return null;
     }
-    
+
     public boolean deleteGame(Game game) {
     	if(!StringUtils.isEmpty(game)) {
     		return gameRepository.deleteGame(game);
@@ -50,7 +50,7 @@ public class GameService {
     	return false;
     }
 
-    public GameChangeResponse changeGame(String gameName, GameCommandRequest command) {
+    public GameChangeResponse changeGame(String gameName, GameChangeRequest command) {
     	Game game = gameRepository.getGameByName(gameName);
     	if(null == game) {
     		return new GameChangeResponse(Status.ERROR, "game not found");
