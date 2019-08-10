@@ -7,11 +7,11 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum Color {
-    BLUE("blue"),
-    GREEN("green"),
-    RED("red"),
-    VIOLET("violet"),
-    YELLOW("yellow");
+    BLUE("blau"),
+    GREEN("grün"),
+    RED("rot"),
+    VIOLET("violett"),
+    YELLOW("gelb");
 
     @JsonValue
     private String colorName;
