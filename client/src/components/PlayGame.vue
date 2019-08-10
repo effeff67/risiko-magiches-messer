@@ -1,13 +1,5 @@
 <template>
-    <template v-if="available">
-        <GameMap/>
-        <PlayerMission/>
-    </template>
-    <template v-if="started">
-        <PlayerActionConsole/>
-        <PlayerCardStack/>
-        <PlayerFiguresStack/>
-    </template>
+
 </template>
 
 <script>
@@ -18,13 +10,13 @@
     import PlayerFiguresStack from "./game/PlayerFigureStack";
 
     export default {
-        name: "Game",
+        name: 'PlayGame',
         components: {
-            PlayerFiguresStack,
-            PlayerCardStack,
-            PlayerActionConsole,
-            PlayerMission,
-            GameMap,
+            // PlayerFiguresStack,
+            // PlayerCardStack,
+            // PlayerActionConsole,
+            // PlayerMission,
+            // GameMap,
         },
         data: function () {
             return {

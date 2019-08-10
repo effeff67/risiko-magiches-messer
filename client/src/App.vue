@@ -1,33 +1,35 @@
 <template>
     <div id="app">
-        <h1 v-if="game">Game</h1>
-        <Start v-else/>
+        <router-view/>
     </div>
 </template>
 
 <script>
-    import Start from './components/Start';
-    import Game from './components/Game';
-    import { mapState } from 'vuex';
+  import { mapState } from 'vuex'
 
-
-    export default {
-        name: 'app',
-        components: {
-            Start,
-            Game,
-        },
-        computed: mapState({
-            game: state => state.game,
-        }),
-    }
+  export default {
+    name: 'app',
+    methods: {
+      requestVue: async function (path, options) {
+        let vm = this;
+        console.log('requesting from ', path, JSON.stringify(options))
+        return fetch(vm.serverRoot + '/path', options).then(response => {
+          return response.json()
+        })
+      }
+    },
+    computed: mapState({
+      serverRoot: state => state.serverRoot,
+    }),
+  }
 </script>
 
 <style>
     #app {
+        top: 0;
         position: absolute;
         width: 100%;
-        height:100%;
+        height: 100%;
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

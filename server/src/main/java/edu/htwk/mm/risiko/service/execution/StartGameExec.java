@@ -5,6 +5,8 @@ import edu.htwk.mm.risiko.model.Status;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 
+import java.util.Collections;
+
 public class StartGameExec implements CommandExecutor {
 
     private final Game game;

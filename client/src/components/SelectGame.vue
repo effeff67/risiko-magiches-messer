@@ -43,7 +43,7 @@ import { GameChangeRequest } from '@/shared/model/GameChangeRequest'
 import { Player } from '@/shared/model/Player'
 
 export default {
-    name: 'Start',
+    name: 'SelectGame',
     data: function () {
       return {
         playerName: '',
