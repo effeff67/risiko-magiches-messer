@@ -34,23 +34,15 @@
 </script>
 
 <style scoped>
-    #gameMap, #playerMission {
-        position: absolute;
-        width: 80%;
-        left: 0;
-    }
-
-    #gameMap {
-        top: 0;
-        height: 95%;
-        background-color: #2c3e50;
-    }
 
     #playerMission {
+        position: absolute;
+        width: 80%;
         bottom: 0;
         height: 5%;
         background-color: brown;
     }
+
 
     #playerActionConsole, #playerFigureStack, #playerCardStack {
         position: absolute;

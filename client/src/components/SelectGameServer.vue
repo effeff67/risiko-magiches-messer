@@ -1,5 +1,6 @@
 <template>
     <div id="selectGameServer ">
+        <img alt="Logo" src="@/assets/Reiter.png" id="Logo"/>
         <div v-if="storedServerHost">
             {{ goToNext() }}
         </div>
@@ -48,5 +49,18 @@
 </script>
 
 <style scoped>
-
+    #selectGameServer
+    {
+        margin-top: 5%;
+        background-color: #508a57;
+        width: 100%;
+        height: 100%;
+        color: black;
+        text-align: center;
+    }
+    #Logo {
+        margin-top: 10%;
+        width: 20%;
+        height: auto;
+    }
 </style>
