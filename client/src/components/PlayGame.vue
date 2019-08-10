@@ -1,30 +1,36 @@
 <template>
-
+    <div id="playGame">
+        <GameMap/>
+        <PlayerMission/>
+        <PlayerActionConsole/>
+        <PlayerCardStack/>
+        <PlayerFiguresStack/>
+    </div>
 </template>
 
 <script>
-    import GameMap from "./game/GameMap";
-    import PlayerMission from "./game/PlayerMission";
-    import PlayerActionConsole from "./game/PlayerActionConsole";
-    import PlayerCardStack from "./game/PlayerCardStack";
-    import PlayerFiguresStack from "./game/PlayerFigureStack";
+  import GameMap from '@/components/game/GameMap'
+  import PlayerMission from '@/components/game/PlayerMission'
+  import PlayerActionConsole from '@/components/game/PlayerActionConsole'
+  import PlayerCardStack from '@/components/game/PlayerCardStack'
+  import PlayerFiguresStack from '@/components/game/PlayerFigureStack'
 
-    export default {
-        name: 'PlayGame',
-        components: {
-            // PlayerFiguresStack,
-            // PlayerCardStack,
-            // PlayerActionConsole,
-            // PlayerMission,
-            // GameMap,
-        },
-        data: function () {
-            return {
-                available: false,
-                started: false,
-            }
-        },
-    }
+  export default {
+    name: 'PlayGame',
+    components: {
+      PlayerFiguresStack,
+      PlayerCardStack,
+      PlayerActionConsole,
+      PlayerMission,
+      GameMap,
+    },
+    data: function () {
+      return {
+        available: false,
+        started: false,
+      }
+    },
+  }
 </script>
 
 <style scoped>

@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import SelectGameServer from '@/views/SelectGameServer'
 import SelectGame from '@/views/SelectGame'
-import PlayGame from '@/views/PlayGame'
+import PlayGame from '@/components/PlayGame'
 
 Vue.use(Router);
 

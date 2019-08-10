@@ -1,5 +1,5 @@
 <template>
-
+    <PlayGame/>
 </template>
 
 <script>

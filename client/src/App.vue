@@ -19,7 +19,7 @@
       }
     },
     computed: mapState({
-      serverRoot: state => state.serverRoot,
+      serverHost: state => state.serverHost,
     }),
   }
 </script>

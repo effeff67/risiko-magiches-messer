@@ -39,10 +39,11 @@
 </template>
 
 <script>
-import { GameChangeRequest } from '@/shared/model/GameChangeRequest'
-import { Player } from '@/shared/model/Player'
+  import { GameChangeRequest } from '@/shared/model/GameChangeRequest'
+  import { Player } from '@/shared/model/Player'
+  import { mapState } from 'vuex'
 
-export default {
+  export default {
     name: 'SelectGame',
     data: function () {
       return {
@@ -57,16 +58,19 @@ export default {
         newGameMapName: '',
       }
     },
+    computed: mapState({
+      serverHost: state => state.serverHost,
+    }),
     methods: {
-      newGameColors() {
+      newGameColors () {
         return this.newGameMaps.filter((map) => {
-          if(map.name === this.newGameMapName) return map;
-        })[0].playerColors;
+          if (map.name === this.newGameMapName) return map
+        })[0].playerColors
       },
       handleSubmit: function (e) {
         let vm = this
         this.failure = ''
-        if(this.newGameName && this.playerName && this.playerColor) {
+        if (this.newGameName && this.playerName && this.playerColor) {
           let requestBody = JSON.stringify(new GameChangeRequest(
             new Player(this.playerName, this.playerColor),
             'addGame',
@@ -77,13 +81,13 @@ export default {
             method: 'PUT',
             headers: { 'Content-type': 'application/json' },
             body: requestBody
-          }).then( response => {
-            response.json().then( json => {
+          }).then(response => {
+            response.json().then(json => {
               console.log(JSON.stringify(json))
             })
           })
         } else if (this.selectedGameName && this.playerName.trim()) {
-          let requestBody = JSON.stringify(new GameChangeRequest(new Player( vm.playerName, vm.playerColor ), 'addPlayer'))
+          let requestBody = JSON.stringify(new GameChangeRequest(new Player(vm.playerName, vm.playerColor), 'addPlayer'))
           console.log(requestBody)
           /*
           fetch('http://localhost:1301/mm-risiko/games/' + this.selectedGameName + '/player', {
@@ -102,17 +106,17 @@ export default {
       fetch('http://localhost:1301/mm-risiko/games').then(response => {
         response.json().then(json => {
           console.log(JSON.stringify(json))
-          vm.selectableGames = json.games;
-        });
-      });
+          vm.selectableGames = json.games
+        })
+      })
       fetch('http://localhost:1301/mm-risiko/maps').then(response => {
         response.json().then(json => {
           console.log(JSON.stringify(json))
-          vm.newGameMaps = json;
-        });
-      });
+          vm.newGameMaps = json
+        })
+      })
     }
-}
+  }
 </script>
 
 <style scoped>

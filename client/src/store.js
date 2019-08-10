@@ -9,9 +9,16 @@ export default new Vuex.Store({
         game: null,
     },
     mutations: {
-        setServerHost: (state) => (host) => state.serverHost = host,
+        setServerHost(state, host) {
+            state.serverHost = host
+        },
         setGame: (state) => (g) => state.game = g,
         removeGame: state => state.game = null,
     },
-    actions: {},
+    actions: {
+        request() {
+
+        },
+        setServerHost: (state) => (host) => state.serverHost = host
+    },
 });
