@@ -17,12 +17,11 @@ public class AttackRegionValidator implements CommandValidator {
 
     public AttackRegionValidator(GameChangeRequest command) {
         this.command = command;
-        this.response = new GameChangeResponse();
+        this.response = new GameChangeResponse(Status.ERROR);
     }
 
     @Override
     public CommandExecutor validate(Game game) {
-        response.setStatus(Status.ERROR);
         Object targetCountryName = command.getCommandDetails().get("targetCountry");
         Object sourceCountryName = command.getCommandDetails().get("sourceCountry");
         Integer troopCount = (Integer) command.getCommandDetails().get("troopCount");

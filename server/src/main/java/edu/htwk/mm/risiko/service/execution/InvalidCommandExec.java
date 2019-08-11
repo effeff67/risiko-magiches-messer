@@ -9,6 +9,7 @@ public class InvalidCommandExec implements CommandExecutor {
 
     public InvalidCommandExec(GameChangeResponse response) {
         this.response = response;
+        response.setStatus(Status.ERROR);
     }
 
     @Override

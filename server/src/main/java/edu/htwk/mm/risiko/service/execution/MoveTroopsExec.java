@@ -1,25 +1,33 @@
 package edu.htwk.mm.risiko.service.execution;
 
+import edu.htwk.mm.risiko.model.Country;
 import edu.htwk.mm.risiko.model.Game;
-import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 
 public class MoveTroopsExec implements CommandExecutor {
 
-    private Game game;
-    private GameChangeRequest command;
-    private GameChangeResponse response;
+    private final Game game;
+    private final Country source;
+    private final Country target;
+    private final Integer movingTroopCount;
+    private final GameChangeResponse response;
 
-    public MoveTroopsExec(Game game, GameChangeRequest command, GameChangeResponse response) {
+    public MoveTroopsExec(Game game, Country source, Country target, Integer movingTroopCount, GameChangeResponse response) {
         this.game = game;
-        this.command = command;
+        this.source = source;
+        this.target = target;
+        this.movingTroopCount = movingTroopCount;
         this.response = response;
     }
+
+
     @Override
     public GameChangeResponse execute() {
-        command.getCommandDetails().get(country1).setTroopcount(command.getCommandDetails().get(country1).getTroopcount) - command.getCommandDetails().get(troops);
-        command.getCommandDetails().get(country2).setTroopcount(command.getCommandDetails().get(country2).getTroopcount) + command.getCommandDetails().get(troops);
-        response.setMessage("Truppen erfolgreich von " + " nach " + " bewegt.");
+        source.setTroopCount(source.getTroopCount() - movingTroopCount);
+        target.setTroopCount(target.getTroopCount() + movingTroopCount);
+        response.setMessage(String.format("%s Truppen erfolgreich von %s nach %s bewegt.", movingTroopCount,
+                source.getRegion().getName(),
+                target.getRegion().getName()));
         return response;
     }
 }

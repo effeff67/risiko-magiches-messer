@@ -2,6 +2,7 @@ package edu.htwk.mm.risiko.service.execution;
 
 import edu.htwk.mm.risiko.model.Country;
 import edu.htwk.mm.risiko.model.Game;
+import edu.htwk.mm.risiko.model.Occupation;
 import edu.htwk.mm.risiko.model.Player;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 
@@ -60,6 +61,8 @@ public class AttackRegionExec implements CommandExecutor {
             response.setMessage(String.format("Das Gebiet %s konnte nicht eingenommen werden. Der Angreifer verliert %s Truppen und der Verteidiger %s Truppen.",
                     target.getRegion().getName(), offenceLostCount, defenceLostCount));
         } else {
+            target.setHolder(player.getColor());
+            game.setLastOccupation(new Occupation(player.getColor(), source.getRegion(), target.getRegion()));
             response.setMessage(String.format("Das Gebiet %s wurde erfolgreich eingenommen. Der Angreifer verliert %s Truppen und der Verteidiger %s Truppen.",
                     target.getRegion().getName(), offenceLostCount, defenceLostCount));
         }

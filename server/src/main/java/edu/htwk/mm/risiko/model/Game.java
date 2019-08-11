@@ -25,6 +25,7 @@ public class Game {
 	private List<Missions> missions;
 	private CardsStack cardsStack;
 	private int setCount;
+	private Occupation lastOccupation;
 
     public Game(String gameName, Player player, boolean conquerTheWorld) {
         this.name = gameName;
@@ -33,5 +34,4 @@ public class Game {
         this.conquerWorld = conquerTheWorld;
         this.started = false;
     }
-
 }

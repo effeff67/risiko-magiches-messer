@@ -15,6 +15,7 @@ public enum GameCommand {
     ATTACK_REGION("attackRegion"),
     DRAW_CARD("drawCard"),
     MOVE_TROOPS("moveTroops"),
+    MOVE_TROOP_INTO_OCCUPIED_COUNTRY("moveTroopsIntoOccupiedCountry"),
     PLACE_TROOP("placeTroop"),
     PLACE_TROOPS("placeTroops"),
     RECRUIT_TROOPS("recruitTroops"),

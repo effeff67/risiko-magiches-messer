@@ -9,7 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 public class GameChangeResponse {
     private Status status;
     private String message;
@@ -22,5 +21,15 @@ public class GameChangeResponse {
     public GameChangeResponse(Status status, String message) {
         this.status = status;
         this.message = message;
+    }
+
+    public GameChangeResponse setMessage(String message) {
+        this.message = message;
+        return this;
+    }
+
+    public GameChangeResponse setStatus(Status status) {
+        this.status = status;
+        return this;
     }
 }

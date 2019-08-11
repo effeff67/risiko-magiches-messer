@@ -13,6 +13,7 @@ public class CommandExecution {
             case ATTACK_REGION: return new AttackRegionValidator(commandRequest);
             case DRAW_CARD: return new DrawCardValidator(commandRequest);
             case MOVE_TROOPS: return new MoveTroopValidator(commandRequest);
+            case MOVE_TROOP_INTO_OCCUPIED_COUNTRY: return new MoveTroopAfterOccupationValidation(commandRequest);
             case PLACE_TROOP: return new PlaceTroopValidator(commandRequest);
             case PLACE_TROOPS: return new PlaceTroopsValidator(commandRequest);
             case RECRUIT_TROOPS: return new RecruitTroopsValidator(commandRequest);
