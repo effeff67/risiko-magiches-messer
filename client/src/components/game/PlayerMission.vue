@@ -7,8 +7,10 @@
 <script>
 export default {
     name: "PlayerMission",
-    data: {
-        mission: 'not set'
+    data: function(){
+      return {
+        mission: 'not set',
+      }
     }
 }
 

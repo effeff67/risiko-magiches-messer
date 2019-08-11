@@ -19,7 +19,7 @@
       }
     },
     computed: mapState({
-      serverHost: state => state.serverHost,
+      riskServerRoot: state => state.serverHost,
     }),
   }
 </script>
