@@ -7,82 +7,82 @@
       "troopBonus": 5,
       "countries": [
         {
-          "region": "ALASKA",
+          "region": "Alaska",
           "neighborhood": [
-            "ALBERTA",
-            "NORTH_WEST_TERRETORIES",
-            "KAMCHATKA"
+            "Alberta",
+            "Nordwest-Territorium",
+            "Kamtschatka"
           ]
         },
         {
-          "region": "ALBERTA",
+          "region": "Alberta",
           "neighborhood": [
-            "ALASKA",
-            "NORTH_WEST_TERRETORIES",
-            "ONTARIO",
-            "WESTERN_STATES"
+            "Alaska",
+            "Nordwest-Territorium",
+            "Ontario",
+            "Weststaaten"
           ]
         },
         {
-          "region": "NORTH_WEST_TERRETORIES",
+          "region": "Nordwest-Territorium",
           "neighborhood": [
-            "ALASKA",
-            "ALBERTA",
-            "ONTARIO",
-            "GREENLAND"
+            "Alaska",
+            "Alberta",
+            "Ontario",
+            "Grönland"
           ]
         },
         {
-          "region": "GREENLAND",
+          "region": "Grönland",
           "neighborhood": [
-            "ONTARIO",
-            "NORTH_WEST_TERRETORIES",
-            "EAST_CANADA",
-            "ICELAND"
+            "Ontario",
+            "Nordwest-Territorien",
+            "Ostkanada",
+            "Island"
           ]
         },
         {
-          "region": "ONTARIO",
+          "region": "Ontario",
           "neighborhood": [
-            "ALBERTA",
-            "WESTERN_STATES",
-            "EASTERN_STATES",
-            "EAST_CANADA",
-            "GREENLAND"
+            "Alberta",
+            "Weststaaten",
+            "Oststaaten",
+            "Ostkanada",
+            "Grönland"
           ]
         },
         {
-          "region": "EAST_CANADA",
+          "region": "Ostkanada",
           "neighborhood": [
-            "ONTARIO",
-            "EASTERN_STATES",
-            "GREENLAND"
+            "Ontario",
+            "Oststaaten",
+            "Grönland"
           ]
         },
         {
-          "region": "WESTERN_STATES",
+          "region": "Weststaaten",
           "neighborhood": [
-            "ALBERTA",
-            "ONTARIO",
-            "EASTERN_STATES",
-            "MIDDLE_AMERICA"
+            "Alberta",
+            "Ontario",
+            "Oststaaten",
+            "Mittelamerika"
           ]
         },
         {
-          "region": "EASTERN_STATES",
+          "region": "Oststaaten",
           "neighborhood": [
-            "ONTARIO",
-            "WESTERN_STATES",
-            "EAST_CANADA",
-            "MIDDLE_AMERICA"
+            "Ontario",
+            "Weststaaten",
+            "Ostkanada",
+            "Mittelamerika"
           ]
         },
         {
-          "region": "MIDDLE_AMERICA",
+          "region": "Mittelamerika",
           "neighborhood": [
-            "WESTERN_STATES",
-            "EASTERN_STATES",
-            "VENEZUELA"
+            "Weststaaten",
+            "Oststaaten",
+            "Venezuela"
           ]
         }
       ]
@@ -92,35 +92,35 @@
       "troopBonus": 2,
       "countries":[
       {
-          "region": "ARGENTINA",
+          "region": "Argentinien",
           "neighborhood": [
-            "PERU",
-            "BRAZIL"
+            "Peru",
+            "Brasilien"
           ]
        },
       {
-          "region": "BRAZIL",
+          "region": "Brasilien",
           "neighborhood": [
-            "VENEZUELA",
-            "PERU",
-            "ARGENTINA",
-            "NORTHERN_AFRICA"
+            "Venezuela",
+            "Peru",
+            "Argentinien",
+            "Nordamerika"
           ]
        },
       {
-          "region": "PERU",
+          "region": "Peru",
           "neighborhood": [
-            "ARGENTINA",
-            "BRAZIL",
-            "VENEZUELA"
+            "Argentinien",
+            "Brasilien",
+            "Venezuela"
           ]
        } ,
       {
-          "region": "VENEZUELA",
+          "region": "Venezuela",
           "neighborhood": [
-            "MIDDLE_AMERICA",
-            "BRAZIL",
-            "PERU"
+            "Mittelamerika",
+            "Brasilien",
+            "Peru"
           ]
        }
        ]
@@ -130,70 +130,70 @@
       "troopBonus": 5,
       "countries":[
       {
-          "region": "GREAT_BRITAIN",
+          "region": "Großbritannien",
           "neighborhood": [
-            "ICELAND",
-            "SKANDINAVIA",
-            "NORTHERN_EUROPE",
-            "WESTERN_EUROPE"
+            "Island",
+            "Skandinavien",
+            "Nordeuropa",
+            "Westeuropa"
           ]
         },
       {
-          "region": "ICELAND",
+          "region": "Island",
           "neighborhood": [
-            "GREENLAND",
-            "GREAT_BRITAIN",
-            "SKANDINAVIA"
+            "Grönland",
+            "Großbritanien",
+            "Skandinavien"
           ]
         },
       {
-          "region": "NORTHERN_EUROPE",
+          "region": "Nordeuropa",
           "neighborhood": [
-            "GREAT_BRITAIN",
-            "SKANDINAVIA",
-            "RUSSIA",
-            "SOUTHERN_EUROPE",
-            "WESTERN_EUROPE"
+            "Großbritannien",
+            "Skandinavien",
+            "Russland",
+            "Südeuropa",
+            "Westeuropa"
           ]
         },
       {
-          "region": "RUSSIA",
+          "region": "Russland",
           "neighborhood": [
-            "SKANDINAVIA",
-            "NORTHERN_EUROPE",
-            "SOUTHERN_EUROPE",
-            "URAL",
-            "AFGHANISTAN",
-            "MIDDLE_EAST"
+            "Skandinavien",
+            "Nordeuropa",
+            "Südeuropa",
+            "Ural",
+            "Afghanistan",
+            "Mitteleuropa"
           ]
         },
       {
-          "region": "SKANDINAVIA",
+          "region": "Skandinavien",
           "neighborhood": [
-            "ICELAND",
-            "GREAT_BRITAIN",
-            "NORTHERN_EUROPE",
-            "RUSSIA"
+            "Island",
+            "Großbritannien",
+            "Nordeuropa",
+            "Russland"
           ]
         },
       {
-          "region": "SOUTHERN_EUROPE",
+          "region": "Südeuropa",
           "neighborhood": [
-            "WESTERN_EUROPE",
-            "NORTHERN_EUROPE",
-            "RUSSIA",
-            "MIDDLE_EAST",
-            "EGYPT",
-            "NORTHERN_AFRICA"
+            "Westeuropa",
+            "Nordeuropa",
+            "Russland",
+            "Naher Osten",
+            "Ägypten",
+            "Nordafrika"
           ]
         },
       {
-          "region": "WESTERN_EUROPE",
+          "region": "Westeuropa",
           "neighborhood": [
-            "GREAT_BRITAIN",
-            "NORTHERN_EUROPE",
-            "SOUTHERN_EUROPE",
-            "NORTHERN_AFRICA"
+            "Großbritannien",
+            "Nordeuropa",
+            "Südeuropa",
+            "Nordeuropa"
           ]
         }
       ]
@@ -203,57 +203,57 @@
       "troopBonus": 3,
       "countries":[
       {
-          "region": "CENTRAL_AFRICA",
+          "region": "Zentralafrika",
           "neighborhood": [
-            "NORTHERN_AFRICA",
-            "EASTERN_AFRICA",
-            "SOUTHERN_AFRICA"
+            "Nordafrika",
+            "Ostafrika",
+            "Südafrika"
           ]
         },
         {
-          "region": "EASTERN_AFRICA",
+          "region": "Ostafrika",
           "neighborhood": [
-            "CENTRAL_AFRICA",
-            "EGYPT",
-            "MADAGASCAR",
-            "NORTHERN_AFRICA",
-            "SOUTHERN_AFRICA",
-            "MIDDLE_EAST"
+            "Zentralafrika",
+            "Ägypten",
+            "Madagaskar",
+            "Nordafrika",
+            "Südafrika",
+            "Naher Osten"
           ]
         },
         {
-          "region": "EGYPT",
+          "region": "Ägypten",
           "neighborhood": [
-            "NORTHERN_AFRICA",
-            "EASTERN_AFRICA",
-            "MIDDLE_EAST",
-            "SOUTHERN_EUROPE"
+            "Nordafrika",
+            "Ostafrika",
+            "naher Osten",
+            "Südeuropa"
           ]
         },
         {
-          "region": "MADAGASCAR",
+          "region": "Madagaskar",
           "neighborhood": [
-            "EASTERN_AFRICA",
-            "SOUTHERN_AFRICA"
+            "Ostafrika",
+            "Südafrika"
           ]
         },
         {
-          "region": "NORTHERN_AFRICA",
+          "region": "Nordafrika",
           "neighborhood": [
-            "EGYPT",
-            "EASTERN_AFRICA",
-            "CENTRAL_AFRICA",
-            "BRAZIL",
-            "WESTERN_EUROPE",
-            "SOUTHERN_EUROPE"
+            "Ägypten",
+            "Ostafrika",
+            "Zentralafrika",
+            "Brasiien",
+            "Westeuropa",
+            "Südeuropa"
           ]
         },
         {
-          "region": "SOUTHERN_AFRICA",
+          "region": "Südafrika",
           "neighborhood": [
-            "CENTRAL_AFRICA",
-            "EASTERN_AFRICA",
-            "MADAGASCAR"
+            "Zentralafrika",
+            "Osatfrika",
+            "Madagaskar"
           ]
         }
       ]
@@ -263,114 +263,114 @@
       "troopBonus": 7,
       "countries":[
       {
-          "region": "AFGHANISTAN",
+          "region": "Afghanistan",
           "neighborhood": [
-            "RUSSIA",
-            "URAL",
-            "CHINA",
-            "INDIA",
-            "MIDDLE_EAST"
+            "Russland",
+            "Ural",
+            "China",
+            "Indien",
+            "Naher Osten"
           ]
         },
         {
-          "region": "CHINA",
+          "region": "China",
           "neighborhood": [
-            "SOUTHEAST_ASIA",
-            "INDIA",
-            "AFGHANISTAN",
-            "URAL",
-            "SIBIRIA",
-            "MONGOLIA"
+            "Südostasien",
+            "Indien",
+            "Afghanistan",
+            "Ural",
+            "Sibirien",
+            "Mongolei"
           ]
         },
         {
-          "region": "INDIA",
+          "region": "Indien",
           "neighborhood": [
-            "MIDDLE_EAST",
-            "AFGHANISTAN",
-            "CHINA",
-            "SOUTHEAST_ASIA"
+            "Naher Osten",
+            "Afghanistan",
+            "China",
+            "Südostasien"
           ]
         },
         {
-          "region": "IRKUTSK",
+          "region": "Irkutsk",
           "neighborhood": [
-            "SIBIRIA",
-            "MONGOLIA",
-            "KAMCHATKA",
-            "JAKUTIEN"
+            "Sibirien",
+            "Mongolei",
+            "Kamtschatka",
+            "Jakutien"
           ]
         },
         {
-          "region": "JAKUTIEN",
+          "region": "Jakutien",
           "neighborhood": [
-            "SIBIRIA",
-            "IRKUTSK",
-            "KAMCHATKA"
+            "Sibirien",
+            "Irkutsk",
+            "Kamtschatka"
           ]
         },
         {
-          "region": "JAPAN",
+          "region": "Japan",
           "neighborhood": [
-            "KAMCHATKA",
-            "MONGOLIA"
+            "Kamtschatka",
+            "Mongolei"
           ]
         },
         {
-          "region": "KAMCHATKA",
+          "region": "Kamtschatka",
           "neighborhood": [
-            "JAKUTIEN",
-            "IRKUTSK",
-            "MONGOLIA",
-            "ALASKA"
+            "Jakutien",
+            "Irkutsk",
+            "Mongolei",
+            "Alaska"
           ]
         },
         {
-          "region": "MIDDLE_EAST",
+          "region": "Naher Osten",
           "neighborhood": [
-            "AFGHANISTAN",
-            "INDIA",
-            "RUSSIA",
-            "SOUTHERN_EUROPE",
-            "EGYPT",
-            "EASTERN_AFRICA"
+            "Afghanistan",
+            "Indien",
+            "Russland",
+            "Südeuropa",
+            "Ägypten",
+            "Ostafrika"
           ]
         },
         {
-          "region": "MONGOLIA",
+          "region": "Mongolei",
           "neighborhood": [
-            "KAMCHATKA",
-            "IRKUTSK",
-            "SIBIRIA",
-            "CHINA",
-            "JAPAN"
+            "Kamtschatka",
+            "Irkutsk",
+            "Sibirien",
+            "China",
+            "Japan"
           ]
         },
         {
-          "region": "SIBIRIA",
+          "region": "Sibirien",
           "neighborhood": [
-            "JAKUTIEN",
-            "IRKUTSK",
-            "MONGOLIA",
-            "CHINA",
-            "URAL"
+            "Jakutien",
+            "Irkutsk",
+            "Mongolei",
+            "China",
+            "Ural"
           ]
         },
         {
-          "region": "SOUTHEAST_ASIA",
+          "region": "Südostasien",
           "neighborhood": [
-            "CHINA",
-            "INDIA",
-            "INDONESIA"
+            "China",
+            "Indien",
+            "Indonesien"
           ]
         },
         {
-          "region": "URAL",
+          "region": "Ural",
           "neighborhood": [
-            "RUSSIA",
-            "AFGHANISTAN",
-            "CHINA",
-            "SIBIRIA"
+            "Russland",
+            "Afghanistan",
+            "China",
+            "Sibirien"
           ]
         }
       ]
@@ -380,32 +380,32 @@
       "troopBonus": 2,
       "countries":[
       {
-          "region": "EASTERN_AUSTRALIA",
+          "region": "Ostaustralien",
           "neighborhood": [
-            "GUINEA",
-            "WESTERN_AUSTRALIA"
+            "Neuguinea",
+            "Westaustralien"
           ]
         },
         {
-          "region": "GUINEA",
+          "region": "Neuguinea",
           "neighborhood": [
-            "INDONESIA",
-            "EASTERN_AUSTRALIA"
+            "Indonesien",
+            "Ostaustralien"
           ]
         },
         {
-          "region": "INDONESIA",
+          "region": "Indonesien",
           "neighborhood": [
-            "SOUTHEAST_ASIA",
-            "GUINEA",
-            "WESTERN_AUSTRALIA"
+            "Südostasien",
+            "Neuguinea",
+            "Westaustralien"
           ]
         },
         {
-          "region": "WESTERN_AUSTRALIA",
+          "region": "Westaustralien",
           "neighborhood": [
-            "INDONESIA",
-            "EASTERN_AFRICA"
+            "Indonesien",
+            "Ostafrika"
           ]
         }
       ]
