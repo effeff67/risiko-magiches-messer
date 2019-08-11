@@ -28,6 +28,4 @@
         position: absolute;
         left:40%;
     }
-
-
 </style>
