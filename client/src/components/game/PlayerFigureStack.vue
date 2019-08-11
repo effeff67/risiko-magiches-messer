@@ -1,7 +1,7 @@
 <template>
     <div id="playerFigureStack">
-        <span id="activatedFigures">{{ countActivatedFigures }}</span>
-        <span id="inactiveFigures">{{ countInactiveFigures }}</span>
+        <div id="activatedFigures">{{ countActivatedFigures }}</div>
+
     </div>
 </template>
 
@@ -11,29 +11,23 @@
         data: function() {
             return {
                 countActivatedFigures: 0,
-                countInactiveFigures: 35,
             }
         }
     }
 </script>
 
 <style scoped>
-    #activatedFigures, #inactiveFigures {
+    #activatedFigures {
         display: block;
-        float:left;
         margin: 2%;
-        height: 2%;
         padding: 4%;
         border-radius: 20%;
         border: 1px solid black;
         background-color: white;
-    }
-
-    #activatedFigures {
         color: black;
+        position: absolute;
+        left:40%;
     }
 
-    #inactiveFigures {
-        color:lightgrey;
-    }
+
 </style>

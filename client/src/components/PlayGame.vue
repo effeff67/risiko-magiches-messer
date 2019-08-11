@@ -39,8 +39,8 @@
         position: absolute;
         width: 80%;
         bottom: 0;
-        height: 5%;
-        background-color: brown;
+        height: 7%;
+        background-color: #e06363;
     }
 
 
@@ -53,18 +53,18 @@
     #playerActionConsole {
         top: 0;
         height: 60%;
-        background-color: beige;
+        background-color: #c1e8c6;
     }
 
     #playerFigureStack {
         bottom: 0;
-        height: 10%;
-        background-color: white;
+        height: 7%;
+        background-color: #98d6a0;
     }
 
     #playerCardStack {
         top: 60%;
-        height: 30%;
-        background-color: red;
+        height: 33%;
+        background-color:#508a57;
     }
 </style>

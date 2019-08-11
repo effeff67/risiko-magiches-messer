@@ -22,7 +22,7 @@ export default {
         top: 0;
         height: 95%;
         background-repeat: no-repeat;
-        background-size: 100%;
+        background-size: 105%;
         background-position: center;
     }
 </style>

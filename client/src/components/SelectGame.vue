@@ -2,11 +2,15 @@
     <div id="Start">
         <form @submit.prevent="handleSubmit">
             <div>
-                <img alt="Logo" src="@/assets/Reiter.png" id="Logo"/>
+                <img alt="Logo" src="@/assets/RisikoLogo.png" id="Logo"/>
+                <br>
             </div>
             <div>
+                <br>
+                <br>
                 <input v-model="playerName" id="playerName"/><br/>
                 <label for="playerName">Dein Spielername</label>
+                <br>
             </div>
             <div v-if="selectableGames.length > 0">
                 <select v-model="selectedGameName" id="gameName">
@@ -39,6 +43,8 @@
 
         </form>
         <p class="error">{{ failure }}</p>
+        <img alt="Schlacht Links" src="@/assets/Schlacht Links.png" id="Schlachtlinks"/>
+        <img alt="Schlacht Rechts" src="@/assets/Schlacht Rechts.png" id="Schlachtrechts"/>
     </div>
 </template>
 
@@ -126,6 +132,7 @@
 </script>
 
 <style scoped>
+
 #Start {
     margin-top: 5%;
     background-color: #508a57;
@@ -142,9 +149,22 @@
     height: auto;
 }
 
-#playerName{
-    font-family: Georgia;
-    color: gray;
-    }
+#Schlachtlinks {
+    width: 35%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+
+}
+
+#Schlachtrechts {
+    width: 35%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
 
 </style>

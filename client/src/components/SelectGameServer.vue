@@ -1,6 +1,6 @@
 <template>
     <div id="selectGameServer ">
-        <img alt="Logo" src="@/assets/Reiter.png" id="Logo"/>
+        <img alt="Logo" src="@/assets/RisikoLogo.png" id="Logo"/>
         <div v-if="storedServerHost">
             {{ goToNext() }}
         </div>
@@ -9,7 +9,9 @@
             <input type="text" v-model="serverHost"/>
             <input type="submit" value="check server and continue"/>
         </form>
-    </div>
+    <img alt="Schlacht Links" src="@/assets/Schlacht Links.png" id="Schlachtlinks"/>
+    <img alt="Schlacht Rechts" src="@/assets/Schlacht Rechts.png" id="Schlachtrechts"/>
+</div>
 </template>
 
 <script>
@@ -60,7 +62,25 @@
     }
     #Logo {
         margin-top: 10%;
-        width: 20%;
+        width: 30%;
         height: auto;
+    }
+
+    #Schlachtlinks {
+        width: 35%;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+
+    }
+
+    #Schlachtrechts {
+        width: 35%;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        right: 0;
     }
 </style>
