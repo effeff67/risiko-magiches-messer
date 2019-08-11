@@ -1,14 +1,22 @@
 package edu.htwk.mm.risiko.service.execution;
 
+import edu.htwk.mm.risiko.model.Country;
 import edu.htwk.mm.risiko.model.Game;
+import edu.htwk.mm.risiko.model.Mission;
+import edu.htwk.mm.risiko.model.Player;
+import edu.htwk.mm.risiko.model.Region;
 import edu.htwk.mm.risiko.model.Status;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
+import edu.htwk.mm.risiko.service.util.CircularPlayerIterator;
 import edu.htwk.mm.risiko.service.validation.PlaceTroopValidator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import java.util.Collections;
+import java.util.List;
 
 public class StartGameExec implements CommandExecutor {
 
@@ -27,38 +35,10 @@ public class StartGameExec implements CommandExecutor {
         game.setStarted(true);
         Collections.shuffle(game.getPlayers());
         game.setActivePlayer(game.getPlayers().get(0).getColor());
-        Collections.shuffle(game.getMissions());
-        for(int i = 0; i < game.getPlayers().size(); i++){
-            game.getPlayers().get(i).setMission(game.getMissions().get(i));
-        }
-        switch (game.getPlayers().size()) {
-            case 3 :
-                for (int i = 0; i < game.getPlayers().size(); i++) {
-                    game.getPlayers().get(i).setInactiveTroops(35);
-                }
-                break;
-            case 4:
-                for (int i = 0; i < game.getPlayers().size(); i++) {
-                    game.getPlayers().get(i).setInactiveTroops(30);
-                }
-                break;
-            case 5:
-                for (int i = 0; i < game.getPlayers().size(); i++) {
-                    game.getPlayers().get(i).setInactiveTroops(25);
-                }
-                break;
-            default:
-        }
-        Collections.shuffle(game.getGameMap().getContinentList());
-        for(int i = 0; i < game.getPlayers().size(); i++) {
-            for (int j = 0; j < game.getGameMap().getContinentList().size(); j++) {
-                for (int k = 0; k < game.getGameMap().getContinentList().get(j).getCountries().size();k++) {
-                    game.getGameMap().getContinentList().get(j).getCountries().get(k).setHolder(game.getPlayers().get(i).getColor());
-                    game.getGameMap().getContinentList().get(j).getCountries().get(k).setTroopcount(1);
-                    game.getPlayers().get(i).setInactiveTroops(game.getPlayers().get(i).getInactiveTroops() - 1);
-                }
-            }
-        }
+        setMissions();
+        setTroops();
+        setRegions();
+        /*
         int total = 0;
         for(int i = 0; i < game.getPlayers().size();i++){
             total = total + game.getPlayers().get(i).getInactiveTroops();
@@ -72,6 +52,48 @@ public class StartGameExec implements CommandExecutor {
                 j = game.getPlayers().size();
             }
         }
+         */
         return response;
+    }
+
+    private void setRegions() {
+        List<Country> countries = new ArrayList<>();
+        game.getGameMap().getContinentList().forEach(continent -> {
+            continent.getCountries().forEach(country -> {
+                countries.add(country);
+            });
+        });
+        Collections.shuffle(countries);
+        CircularPlayerIterator iterator = new CircularPlayerIterator(game.getPlayers());
+        countries.forEach(country -> {
+            Player current = iterator.next();
+            country.setHolder(current.getColor());
+            country.setTroopcount(1);
+            current.setInactiveTroops(current.getInactiveTroops() - 1);
+        });
+    }
+
+    private void setTroops() {
+        int troopsCount = 0;
+        switch (game.getPlayers().size()) {
+            case 2:
+            case 3: troopsCount =35;
+                break;
+            case 4:
+                troopsCount = 30;
+                break;
+            case 5:
+                troopsCount = 25;
+                break;
+        }
+        for (int i = 0; i < game.getPlayers().size(); i++) {
+            game.getPlayers().get(i).setInactiveTroops(troopsCount);
+        }
+    }
+
+    private void setMissions() {
+        List<Mission> missions = Arrays.asList(Mission.values());
+        Collections.shuffle(missions);
+        game.getPlayers().forEach(player -> player.setMission(missions.remove(0)));
     }
 }
