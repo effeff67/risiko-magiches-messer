@@ -2,12 +2,13 @@ package edu.htwk.mm.risiko.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+//@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Region {
 
     ALASKA("Alaska"),
@@ -32,7 +33,7 @@ public enum Region {
     SIBIRIA("Sibirien"),
     SOUTHEAST_ASIA("Südostasien"),
     URAL("Ural"),
-      
+
     GREAT_BRITAIN("Großbritannien"),
     ICELAND("Island"),
     NORTHERN_EUROPE("Nordeuropa"),
@@ -45,20 +46,20 @@ public enum Region {
     BRAZIL("Brasilien"),
     PERU("Peru"),
     VENEZUELA("Venezuela"),
-    
+
     CENTRAL_AFRICA("Zentralafrika"),
     EASTERN_AFRICA("Ostafrika"),
     EGYPT("Ägypten"),
     MADAGASCAR("Madagaskar"),
     NORTHERN_AFRICA("Nordafrika"),
     SOUTHERN_AFRICA("Südafrika"),
-    
-    EASTERN_AUSTRALIA("Ostraustralien"),
+
+    EASTERN_AUSTRALIA("Ostaustralien"),
     GUINEA("Neuguinea"),
     INDONESIA("Indonesien"),
     WESTERN_AUSTRALIA("Westaustralien")
     ;
-
+    @JsonValue
     private String name;
 
 }

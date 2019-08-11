@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -30,7 +31,7 @@ public class Game {
 
     public Game(String gameName, Player player, GameMap gameMap, boolean conquerTheWorld) {
         this.name = gameName;
-        this.availableColors = Arrays.asList(Color.values());
+        this.availableColors = new ArrayList<>(Arrays.asList(Color.values()));
         this.players = new ArrayList<>();
         players.add(player);
         this.availableColors.remove(player.getColor());
@@ -38,6 +39,8 @@ public class Game {
         this.conquerWorld = conquerTheWorld;
         if(!conquerTheWorld) {
             this.missions = Arrays.asList(Mission.values());
+        } else {
+            this.missions = Collections.emptyList();
         }
         cards = Arrays.asList(Cards.values());
         tradeCounts = 0;

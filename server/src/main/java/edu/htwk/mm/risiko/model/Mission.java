@@ -1,13 +1,11 @@
 package edu.htwk.mm.risiko.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
-
 public enum Mission {
 
 	ELIMINATE_BLUE("Eliminate the blue player."),
@@ -25,6 +23,6 @@ public enum Mission {
 	CONQUER_THE_WORLD("Conquer the world."),
 	CONQUER_24("Conquer 24 countries of your choice."),
 	CONQUER_18("Conquer 18 countries of your choice and place at least 2 troops each.");
-
+	@JsonValue
 	private String name;
 }

@@ -2,7 +2,6 @@ package edu.htwk.mm.risiko.service;
 
 
 import edu.htwk.mm.risiko.model.Game;
-import edu.htwk.mm.risiko.model.GameList;
 import edu.htwk.mm.risiko.model.GameMap;
 import edu.htwk.mm.risiko.model.Player;
 import edu.htwk.mm.risiko.model.Status;
@@ -12,6 +11,8 @@ import edu.htwk.mm.risiko.repository.GameMapRepository;
 import edu.htwk.mm.risiko.repository.GameRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 @Service
 public class GameService {
@@ -26,8 +27,8 @@ public class GameService {
 		this.commandExecution = commandExecution;
 	}
 
-    public GameList getOpenGames() {
-        return new GameList(gameRepository.getAllOpenGames());
+    public List<Game> getOpenGames() {
+        return gameRepository.getAllOpenGames();
     }
 
     public Game getGame(String name) {

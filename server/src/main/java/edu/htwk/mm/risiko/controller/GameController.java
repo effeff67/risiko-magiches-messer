@@ -2,7 +2,6 @@ package edu.htwk.mm.risiko.controller;
 
 
 import edu.htwk.mm.risiko.model.Game;
-import edu.htwk.mm.risiko.model.GameList;
 import edu.htwk.mm.risiko.model.Status;
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 
 @Slf4j
 @CrossOrigin(origins = "*", maxAge = 3600L)
@@ -40,7 +40,7 @@ public class GameController {
 
 
     @GetMapping
-    public ResponseEntity<GameList> getGames() {
+    public ResponseEntity<List<Game>> getGames() {
         log.info("get games requested");
         return ResponseEntity.ok(gameService.getOpenGames());
     }
@@ -70,6 +70,7 @@ public class GameController {
     @PutMapping(path = "/{name}")
     public ResponseEntity<GameChangeResponse> openGame(@PathVariable("name") String gameName,
                                                        @RequestBody() GameChangeRequest request) {
+        log.info("add game requested");
         try {
             AddGameDetails details = new AddGameDetails(request.getCommandDetails());
             Game game = gameService.addGame(gameName, request.getPlayer(), details.conquerTheWorld);

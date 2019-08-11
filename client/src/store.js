@@ -6,19 +6,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        riskServerRoot: '',
-        game: null,
-        player: null,
-        failure: ''
+        riskServerRoot: localStorage.getItem('riskServerRoot') || '',
+        game: JSON.parse(localStorage.getItem('game')),
+        player: JSON.parse(localStorage.getItem('player')),
+        failure: '',
     },
     mutations: {
         setServerHost (state, host) {
             console.log('commits', host)
             state.riskServerRoot = host + ':1301/mm-risiko'
+            localStorage.setItem('riskServerRoot', host + ':1301/mm-risiko')
         },
         setGame (state, game) {
             console.log('setGame called', JSON.stringify(game))
             state.game = game
+            localStorage.setItem('game',  JSON.stringify(game))
         },
         setFailure (state, failure) {
             state.failure = failure
@@ -38,6 +40,7 @@ export default new Vuex.Store({
         },
         addGame: function (state, options) {
             console.log(state.riskServerRoot)
+            console.log(JSON.stringify(options))
             HttpClient.requestClient(this.state.riskServerRoot + '/games/' + options.gameName, {
                 method: 'PUT',
                 headers: { 'Content-type': 'application/json' },
@@ -94,8 +97,5 @@ export default new Vuex.Store({
                 this.commit('setFailure', reason)
             })
         },
-    },
-    receive: async function (state, path, options) {
-        return
     },
 })
