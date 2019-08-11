@@ -125,7 +125,7 @@
 <style scoped>
 
     #selectedGameFrame {
-        padding: 5% 0 0 0;
+        padding: 5%;
         background-color: #508a57;
         width: 100%;
         height: 100%;
