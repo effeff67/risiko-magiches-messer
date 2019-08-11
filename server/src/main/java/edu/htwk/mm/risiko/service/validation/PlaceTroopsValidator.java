@@ -3,6 +3,7 @@ package edu.htwk.mm.risiko.service.validation;
 import edu.htwk.mm.risiko.model.Country;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Status;
+import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.model.api.GameCommand;
 import edu.htwk.mm.risiko.model.api.GameCommandRequest;
@@ -12,22 +13,27 @@ import edu.htwk.mm.risiko.service.execution.PlaceTroopsExec;
 
 public class PlaceTroopsValidator implements CommandValidator {
 
-    private GameCommandRequest command;
+    private GameChangeRequest command;
     private GameChangeResponse response;
 
-    public PlaceTroopsValidator(GameCommandRequest command) {
+    public PlaceTroopsValidator(GameChangeRequest command) {
         this.command = command;
         this.response = new GameChangeResponse();
     }
 
     @Override
-    public CommandExecutor validate(Game game /* , Country country, int troops */) {
-       /* if(country.getHolder() == command.getPlayer().getColor() && troops <= command.getPlayer().getInactiveTroops()) {
-            return new PlaceTroopsExec(game, command, response);
-        } else {
-            response.setStatus(Status.ERROR);
-            response.setMessage("Die gewählte Region befindet sich nicht unter deiner Kontrolle oder du besitzt nicht genügend Truppen.");*/
-            return new InvalidCommandExec(response);
-        }
+    public CommandExecutor validate(Game game) {
+        response.setStatus(Status.ERROR);
+     if(command.getCommandDetails().get(country).getHolder() == command.getPlayer().getColor()) {
+         response.setMessage("Du kontrollierst das gewählte Land nicht.");
+         return new InvalidCommandExec(response);
+     }
+     if(command.getCommandDetails().get(troops) > command.getPlayer().getInactiveTroops()){
+         response.setMessage("Du besitzt nicht genügend Truppen.");
+         return new InvalidCommandExec(response);
+     }
+        response.setStatus(Status.SUCCESS);
+     response.setMessage("Es wurden " + " Truppen auf " + " platziert.");
+     return new PlaceTroopsExec(game, command, response);
     }
-/*}*/
+}

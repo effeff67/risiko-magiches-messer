@@ -4,6 +4,9 @@ import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Status;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
+import edu.htwk.mm.risiko.service.validation.PlaceTroopValidator;
+
+import java.util.Collections;
 
 import java.util.Collections;
 
@@ -24,9 +27,9 @@ public class StartGameExec implements CommandExecutor {
         game.setStarted(true);
         Collections.shuffle(game.getPlayers());
         game.setActivePlayer(game.getPlayers().get(0).getColor());
+        Collections.shuffle(game.getMissions());
         for(int i = 0; i < game.getPlayers().size(); i++){
-            // game.getPlayers().get(i).setMission();
-            // todo missionen verteilbar machen (enum ergänzen)
+            game.getPlayers().get(i).setMission(game.getMissions().get(i));
         }
         switch (game.getPlayers().size()) {
             case 3 :
@@ -56,7 +59,19 @@ public class StartGameExec implements CommandExecutor {
                 }
             }
         }
-        response.setStatus(Status.SUCCESS);
+        int total = 0;
+        for(int i = 0; i < game.getPlayers().size();i++){
+            total = total + game.getPlayers().get(i).getInactiveTroops();
+        }
+        int j = game.getPlayers().size();
+        for (int i = total - 1; i >= 0; i--){
+            command.setPlayer(game.getPlayers().get(j));
+            new PlaceTroopExec(game, command, response);
+            j -= 1;
+            if(j == 0){
+                j = game.getPlayers().size();
+            }
+        }
         return response;
     }
 }

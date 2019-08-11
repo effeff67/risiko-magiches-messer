@@ -1,0 +1,110 @@
+{
+  "name": "ClassicMissions",
+  "playerColors": ["red","green","blue","violet", "yellow"],
+  "missionList": [
+    {
+      "name": "Eliminieren Sie den blauen Spieler.",
+      "mission": "ELIMINATE_BLUE",
+      "targetPlayer": "BLUE",
+      "targetContinentA": null,
+      "targetContinentB": null,
+      "countryCount": null
+    },
+    {
+      "name": "Eliminieren Sie den grünen Spieler.",
+      "mission": "ELIMINATE_GREEN",
+      "targetPlayer": "GREEN",
+      "targetContinentA": null,
+      "targetContinentB": null,
+      "countryCount": null
+    },
+    {
+      "name": "Eliminieren Sie den roten Spieler.",
+      "mission": "ELIMINATE_RED",
+      "targetPlayer": "RED",
+      "targetContinentA": null,
+      "targetContinentB": null,
+      "countryCount": null
+    },
+    {
+      "name": "Eliminieren Sie den violetten Spieler.",
+      "mission": "ELIMINATE_VIOLET",
+      "targetPlayer": "VIOLET",
+      "targetContinentA": null,
+      "targetContinentB": null,
+      "countryCount": null
+    },
+    {
+      "name": "Eliminieren Sie den gelben Spieler.",
+      "mission": "ELIMINATE_YELLOW",
+      "targetPlayer": "YELLOW",
+      "targetContinentA": null,
+      "targetContinentB": null,
+      "countryCount": null
+    },
+    {
+      "name": "Erobern Sie Nordamerika und Afrika.",
+      "mission": "CONQUER_NA_AFRICA",
+      "targetPlayer": null,
+      "targetContinentA": "Nordamerika",
+      "targetContinentB": "Afrika",
+      "countryCount": null
+    },
+    {
+      "name": "Erobern Sie Nordamerika und Australien.",
+      "mission": "CONQUER_NA_AUSTRALIA",
+      "targetPlayer": null,
+      "targetContinentA": "Nordamerika",
+      "targetContinentB": "Australien",
+      "countryCount": null
+    },
+    {
+      "name": "Erobern Sie Asien und Südamerika.",
+      "mission": "CONQUER_ASIA_SA",
+      "targetPlayer": null,
+      "targetContinentA": "Asien",
+      "targetContinentB": "Südamerika",
+      "countryCount": null
+    },
+    {
+      "name": "Erobern Sie Europa und Australien.",
+      "mission": "CONQUER_EUROPE_AUSTRALIA",
+      "targetPlayer": null,
+      "targetContinentA": "Europa",
+      "targetContinentB": "Australien",
+      "countryCount": null
+    },
+    {
+      "name": "Erobern Sie Asien udn Afrika.",
+      "mission": "CONQUER_ASIA_AFRICA",
+      "targetPlayer": null,
+      "targetContinentA": "Asien",
+      "targetContinentB": "Afrika",
+      "countryCount": null
+    },
+    {
+      "name": "Erobern Sie die ganze Welt.",
+      "mission": "CONQUER_THE_WORLD",
+      "targetPlayer": null,
+      "targetContinentA": null,
+      "targetContinentB": null,
+      "countryCount": 42
+    },
+    {
+      "name": "Erobern Sie 24 Gebiete Ihrer Wahl.",
+      "mission": "CONQUER_24",
+      "targetPlayer": null,
+      "targetContinentA": null,
+      "targetContinentB": null,
+      "countryCount": 24
+    },
+    {
+      "name": "Erobern Sie 18 Gebiete Ihrer Wahl und besetzen Sie jedes mit mindestens 2 Einheiten",
+      "mission": "CONQUER_18",
+      "targetPlayer": null,
+      "targetContinentA": null,
+      "targetContinentB": null,
+      "countryCount": 18
+    }
+  ]
+}
