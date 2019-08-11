@@ -1,50 +1,36 @@
 package edu.htwk.mm.risiko.service.execution;
 
+import edu.htwk.mm.risiko.model.Cards;
 import edu.htwk.mm.risiko.model.Game;
+import edu.htwk.mm.risiko.model.Player;
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 
+import java.util.List;
+
 public class TradeCardsInExec implements CommandExecutor {
 
-    private Game game;
-    private GameChangeRequest command;
+    private static int[] TROOP_COUNT = new int[] {4,6,8,10,12,15};
+
+    private final Game game;
+    private final Player player;
+    private final List<Cards> cards;
     private GameChangeResponse response;
 
-    public TradeCardsInExec(Game game, GameChangeRequest command, GameChangeResponse response) {
+    public TradeCardsInExec(Game game, Player player, List<Cards> cards, GameChangeResponse response) {
         this.game = game;
-        this.command = command;
+        this.player = player;
+        this.cards = cards;
         this.response = response;
-
     }
+
     @Override
     public GameChangeResponse execute() {
-        command.getPlayer().getCards().getCards().remove(command.getCommandDetails().get(card1));
-        command.getPlayer().getCards().getCards().remove(command.getCommandDetails().get(card2));
-        command.getPlayer().getCards().getCards().remove(command.getCommandDetails().get(card3));
-        switch(game.getSetCount()){
-            case 1:
-                command.getPlayer().setInactiveTroops(command.getPlayer().getInactiveTroops() + 4);
-                break;
-            case 2:
-                command.getPlayer().setInactiveTroops(command.getPlayer().getInactiveTroops() + 6);
-                break;
-            case 3:
-                command.getPlayer().setInactiveTroops(command.getPlayer().getInactiveTroops() + 8);
-                break;
-            case 4:
-                command.getPlayer().setInactiveTroops(command.getPlayer().getInactiveTroops() + 10);
-                break;
-            case 5:
-                command.getPlayer().setInactiveTroops(command.getPlayer().getInactiveTroops() + 12);
-                break;
-            case 6:
-                command.getPlayer().setInactiveTroops(command.getPlayer().getInactiveTroops() + 15);
-                break;
-            default:
-                command.getPlayer().setInactiveTroops(command.getPlayer().getInactiveTroops() + 15 + (5 * (game.getSetCount() - 6)));
-        }
-        game.setSetCount(game.getSetCount() + 1);
-        response.setMessage("Karten erfolgreich eingetauscht.");
-        return response;
+        cards.forEach(card -> player.getCards().remove(card));
+
+        int troopCount = game.getTradeCounts() >= 6 ? (game.getTradeCounts() - 2) * 5 : TROOP_COUNT[game.getTradeCounts()];
+        player.setInactiveTroops(player.getInactiveTroops() + troopCount);
+        game.setTradeCounts(game.getTradeCounts() + 1);
+        return response.setMessage("Karten erfolgreich eingetauscht.");
     }
 }

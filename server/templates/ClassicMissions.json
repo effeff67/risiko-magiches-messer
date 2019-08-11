@@ -1,6 +1,5 @@
 {
   "name": "ClassicMissions",
-  "playerColors": ["red","green","blue","violet", "yellow"],
   "missionList": [
     {
       "name": "Eliminieren Sie den blauen Spieler.",

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Getter
@@ -22,16 +23,24 @@ public class Game {
 	private List<Player> players;
 	private Color activePlayer;
 	private GameMap gameMap;
-	private List<Missions> missions;
-	private CardsStack cardsStack;
-	private int setCount;
+	private List<Mission> missions;
+	private List<Cards> cards;
+	private int tradeCounts;
 	private Occupation lastOccupation;
 
-    public Game(String gameName, Player player, boolean conquerTheWorld) {
+    public Game(String gameName, Player player, GameMap gameMap, boolean conquerTheWorld) {
         this.name = gameName;
+        this.availableColors = Arrays.asList(Color.values());
         this.players = new ArrayList<>();
         players.add(player);
+        this.availableColors.remove(player.getColor());
+        this.gameMap = gameMap;
         this.conquerWorld = conquerTheWorld;
+        if(!conquerTheWorld) {
+            this.missions = Arrays.asList(Mission.values());
+        }
+        cards = Arrays.asList(Cards.values());
+        tradeCounts = 0;
         this.started = false;
     }
 }

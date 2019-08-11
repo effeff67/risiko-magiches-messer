@@ -2,9 +2,7 @@ package edu.htwk.mm.risiko.service.execution;
 
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Player;
-import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
-import edu.htwk.mm.risiko.service.validation.TradeCardsInValidator;
 
 import java.util.Collections;
 
@@ -22,9 +20,9 @@ public class DrawCardExec implements CommandExecutor {
 
     @Override
     public GameChangeResponse execute() {
-        Collections.shuffle(game.getCardsStack().getCards());
-        player.getCards().add(game.getCardsStack().getCards().get(0));
-        game.getCardsStack().getCards().remove(game.getCardsStack().getCards().size());
+        Collections.shuffle(game.getCards());
+        player.getCards().add(game.getCards().get(0));
+        game.getCards().remove(game.getCards().size());
         return response.setMessage("Sie haben erfolreich erobert, Sie bekommen eine Karte.");
     }
 }

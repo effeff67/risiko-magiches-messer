@@ -71,7 +71,8 @@ public class GameController {
     public ResponseEntity<GameChangeResponse> openGame(@PathVariable("name") String gameName,
                                                        @RequestBody() GameChangeRequest request) {
         try {
-            Game game = gameService.addGame(gameName, request.getPlayer(), new AddGameDetails(request.getCommandDetails()).conquerTheWorld);
+            AddGameDetails details = new AddGameDetails(request.getCommandDetails());
+            Game game = gameService.addGame(gameName, request.getPlayer(), details.conquerTheWorld);
             if (game != null) {
                 return ResponseEntity.ok(new GameChangeResponse(Status.SUCCESS));
             }
@@ -121,8 +122,8 @@ public class GameController {
     static class AddGameDetails {
         private boolean conquerTheWorld;
 
-        public AddGameDetails(LinkedHashMap<String, Boolean> object) {
-            conquerTheWorld = object.get("conquerTheWorld");
+        public AddGameDetails(LinkedHashMap<String, Object> object) {
+            conquerTheWorld = (Boolean) object.get("conquerTheWorld");
         }
     }
 }
