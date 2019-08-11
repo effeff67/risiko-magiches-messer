@@ -18,6 +18,8 @@ export default {
 
 <style scoped>
     #playerMission {
+        position: absolute;
+        top: 20px;
         font-family: Georgia;
         color: black;
     }
