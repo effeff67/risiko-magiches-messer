@@ -5,9 +5,6 @@
 <script>
 export default {
   name: 'GameMap',
-  data: {
-
-  }
 }
 </script>
 

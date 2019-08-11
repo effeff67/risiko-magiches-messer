@@ -1,24 +1,101 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import HttpClient from '@/shared/service/HttpClient'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        serverHost: '',
+        riskServerRoot: '',
         game: null,
+        player: null,
+        failure: ''
     },
     mutations: {
-        setServerHost(state, host) {
-            state.serverHost = host
+        setServerHost (state, host) {
+            console.log('commits', host)
+            state.riskServerRoot = host + ':1301/mm-risiko'
         },
-        setGame: (state) => (g) => state.game = g,
+        setGame (state, game) {
+            console.log('setGame called', JSON.stringify(game))
+            state.game = game
+        },
+        setFailure (state, failure) {
+            state.failure = failure
+        },
         removeGame: state => state.game = null,
     },
     actions: {
-        request() {
-
+        checkServerRoot: function (state, serverHostNameOrIP) {
+            console.log('checking', serverHostNameOrIP)
+            HttpClient.requestClient(serverHostNameOrIP + ':1301/mm-risiko/status').then(json => {
+                if (json && 'OK' === json.message) {
+                    this.commit('setServerHost', serverHostNameOrIP)
+                }
+            }).catch(reason => {
+                this.commit('setFailure', reason)
+            })
         },
-        setServerHost: (state) => (host) => state.serverHost = host
+        addGame: function (state, options) {
+            console.log(state.riskServerRoot)
+            HttpClient.requestClient(this.state.riskServerRoot + '/games/' + options.gameName, {
+                method: 'PUT',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(options.request)
+            }).then(json => {
+                this.state.player = options.request.player
+                if (json && 'SUCCESS' === json.status) {
+                    console.log(JSON.stringify(json), options.gameName)
+                    this.dispatch('loadGame', options.gameName)
+                }else {
+                    console.error('kein json oder ohne success')
+                }
+
+            }).catch(reason => {
+                this.commit('setFailure', reason)
+            })
+        },
+        loadGame: function (state, name) {
+            console.log('loading game', name)
+            if(!name) {
+                throw new Error('kein name für game gefunden')
+            }
+            HttpClient.requestClient(this.state.riskServerRoot + '/games/' + name , {
+                method: 'GET',
+                headers: { 'Content-type': 'application/json' },
+            }).then(json => {
+                console.log('game bekommen', JSON.stringify(json))
+                this.commit('setGame', json)
+            }).catch(reason => {
+                this.commit('setFailure', reason)
+            })
+        },
+        addPlayer: function (state, options) {
+            HttpClient.requestClient(this.state.riskServerRoot + '/games/' + options.gameName, {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(options.request)
+            }).then(json => {
+                state.game = json.game
+                state.player = options.request.player
+            }).catch(reason => {
+                this.commit('setFailure', reason)
+            })
+        },
+        changeGame: function (state, gameChangeRequest) {
+            HttpClient.requestClient(this.state.riskServerRoot + '/games/' + this.state.game.name, {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(gameChangeRequest)
+            }).then(json => {
+                // todo if success reload game
+
+            }).catch(reason => {
+                this.commit('setFailure', reason)
+            })
+        },
     },
-});
+    receive: async function (state, path, options) {
+        return
+    },
+})

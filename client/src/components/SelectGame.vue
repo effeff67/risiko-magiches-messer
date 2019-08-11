@@ -1,6 +1,9 @@
 <template>
     <div id="Start">
-        <form @submit.prevent="handleSubmit">
+        <div v-if="selectedGame">
+            {{ goToNext() }}
+        </div>
+        <form v-else @submit.prevent="handleSubmit">
             <div>
                 <input v-model="playerName" id="playerName"/><br/>
                 <label for="playerName">Dein Spieler name</label>
@@ -34,7 +37,6 @@
             </div>
 
         </form>
-        <p class="error">{{ failure }}</p>
     </div>
 </template>
 
@@ -59,43 +61,32 @@
       }
     },
     computed: mapState({
-      serverHost: state => state.serverHost,
+      riskServerRoot: state => state.riskServerRoot,
+      selectedGame: state => state.game,
     }),
     methods: {
+      goToNext: function () {
+        console.log('called go to playGame');
+        this.$router.push({ path: 'playGame' })
+      },
       newGameColors () {
         return this.newGameMaps.filter((map) => {
           if (map.name === this.newGameMapName) return map
         })[0].playerColors
       },
       handleSubmit: function (e) {
-        let vm = this
-        this.failure = ''
-        if (this.newGameName && this.playerName && this.playerColor) {
-          let requestBody = JSON.stringify(new GameChangeRequest(
-            new Player(this.playerName, this.playerColor),
-            'addGame',
-            { conquerTheWorld: this.newGameConquerTheWorld }
-          ))
-          console.log(requestBody)
-          fetch('http://localhost:1301/mm-risiko/games/' + this.newGameName, {
-            method: 'PUT',
-            headers: { 'Content-type': 'application/json' },
-            body: requestBody
-          }).then(response => {
-            response.json().then(json => {
-              console.log(JSON.stringify(json))
-            })
-          })
-        } else if (this.selectedGameName && this.playerName.trim()) {
-          let requestBody = JSON.stringify(new GameChangeRequest(new Player(vm.playerName, vm.playerColor), 'addPlayer'))
-          console.log(requestBody)
-          /*
-          fetch('http://localhost:1301/mm-risiko/games/' + this.selectedGameName + '/player', {
-            method: 'POST',
-            headers: { 'Content-type': 'application/json' },
-            body: requestBody
-          })
-          */
+        if(this.playerName && this.playerColor) {
+          let player = new Player(this.playerName, this.playerColor);
+          if (this.newGameName) {
+            let gameChangeRequest = new GameChangeRequest(
+              new Player(this.playerName, this.playerColor),
+              'addGame', { conquerTheWorld: this.newGameConquerTheWorld }
+            )
+            this.$store.dispatch('addGame', {gameName: this.newGameName, request: gameChangeRequest});
+          } else if (this.selectedGameName) {
+            let gameChangeRequest = new GameChangeRequest(player, 'addPlayer')
+            this.$store.dispatch('addPlayer', {gameName: this.selectedGameName, request: gameChangeRequest});
+          }
         } else {
           this.failure = 'Bitte vollständig ausfüllen!'
         }
@@ -103,15 +94,13 @@
     },
     created: function () {
       let vm = this
-      fetch('http://localhost:1301/mm-risiko/games').then(response => {
+      fetch('http://' + this.$store.state.riskServerRoot + '/games').then(response => {
         response.json().then(json => {
-          console.log(JSON.stringify(json))
           vm.selectableGames = json.games
         })
       })
-      fetch('http://localhost:1301/mm-risiko/maps').then(response => {
+      fetch('http://' + this.$store.state.riskServerRoot + '/maps').then(response => {
         response.json().then(json => {
-          console.log(JSON.stringify(json))
           vm.newGameMaps = json
         })
       })

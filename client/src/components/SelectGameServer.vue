@@ -5,7 +5,7 @@
         </div>
         <form v-else @submit.prevent="checkServerRoot">
             <h2>Select game server</h2>
-            <input type="text" v-model="serverHost"/>
+            <input type="text" v-model="serverHostNameOrIP"/>
             <input type="submit" value="check server and continue"/>
         </form>
     </div>
@@ -20,11 +20,11 @@
     service: {},
     data: function () {
       return {
-        serverHost: ''
+        serverHostNameOrIP: ''
       }
     },
     computed: mapState({
-      storedServerHost: state => state.serverHost,
+      storedServerHost: state => state.riskServerRoot,
     }),
     methods: {
       goToNext: function () {
@@ -32,18 +32,9 @@
         this.$router.push({ path: 'selectGame' })
       },
       checkServerRoot: function (e) {
-        let vm = this
-        HttpClient.requestClient(this.serverHost, {
-          method: 'GET'
-        }).then(response => {
-          if ('OK' === response.message) {
-            HttpClient.setServerHost(vm.serverHost)
-            vm.$store.state.serverHost = vm.serverHost
-            vm.goToNext()
-          }
-        })
-      }
-    }
+        this.$store.dispatch('checkServerRoot', this.serverHostNameOrIP);
+      },
+    },
   }
 </script>
 
