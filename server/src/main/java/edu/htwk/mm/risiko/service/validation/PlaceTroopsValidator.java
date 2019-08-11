@@ -32,7 +32,7 @@ public class PlaceTroopsValidator implements CommandValidator {
         if (troopCount > command.getPlayer().getInactiveTroops()) {
             return new InvalidCommandExec(response.setMessage("Du besitzt nicht genügend Truppen."));
         }
-        Player player = command.getPlayer();
+        Player player = GameEntityFinder.findPlayerByColor(game, command.getPlayer().getColor());
         return new PlaceTroopsExec(game, response.setStatus(Status.SUCCESS), player, country, troopCount);
     }
 }
