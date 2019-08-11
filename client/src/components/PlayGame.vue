@@ -1,5 +1,5 @@
 <template>
-    <div id="playGame">
+    <div v-if="gameToPlay" id="playGame">
         <GameMap/>
         <PlayerMission/>
         <PlayerActionConsole/>
@@ -14,6 +14,7 @@
   import PlayerActionConsole from '@/components/game/PlayerActionConsole'
   import PlayerCardStack from '@/components/game/PlayerCardStack'
   import PlayerFiguresStack from '@/components/game/PlayerFigureStack'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'PlayGame',
@@ -24,12 +25,19 @@
       PlayerMission,
       GameMap,
     },
-    data: function () {
-      return {
-        available: false,
-        started: false,
+    computed: mapState({
+      gameToPlay: function(state){
+        if(state.game) {
+          let vm = this;
+          setTimeout(function () {
+            vm.$store.dispatch('reloadGame')
+          }, 1000);
+          return state.game
+        } else {
+          this.$router.back()
+        }
       }
-    },
+    }),
   }
 </script>
 
