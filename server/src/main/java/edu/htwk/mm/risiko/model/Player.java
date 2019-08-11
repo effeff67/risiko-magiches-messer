@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,7 +14,7 @@ public class Player {
     private Color color;
 	private Mission mission;
 	private int inactiveTroops;
-	private CardsStack cards;
+	private List<Cards> cards;
 	private boolean conquered = false;
 
 	public Player (String name, Color color) {

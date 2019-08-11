@@ -13,8 +13,8 @@ import edu.htwk.mm.risiko.service.util.GameEntityFinder;
 
 public class DrawCardValidator implements CommandValidator {
 
-    GameChangeResponse response;
-    GameChangeRequest command;
+    private final GameChangeResponse response;
+    private final GameChangeRequest command;
 
     public DrawCardValidator(GameChangeRequest command) {
         this.command = command;
@@ -27,7 +27,6 @@ public class DrawCardValidator implements CommandValidator {
         if(player.getColor() != game.getLastOccupation().getColor()){
             return new InvalidCommandExec(response.setMessage("Sie Haben diese Kampfphase nicht erfolgreich erobert. Sie bekommen keine Karte."));
         }
-        response.setStatus(Status.SUCCESS);
-        return new DrawCardExec(game, command, response.setMessage("Sie haben erfolreich erobert, Sie bekommen eine Karte."));
+        return new DrawCardExec(game, player, response.setStatus(Status.SUCCESS));
     }
 }
