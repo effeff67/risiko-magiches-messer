@@ -3,9 +3,7 @@ package edu.htwk.mm.risiko.service.execution;
 import edu.htwk.mm.risiko.model.Country;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Player;
-import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
-import edu.htwk.mm.risiko.model.api.GameCommandRequest;
 
 import static edu.htwk.mm.risiko.model.Status.SUCCESS;
 
@@ -27,7 +25,7 @@ public class PlaceTroopsExec implements CommandExecutor {
 
     @Override
     public GameChangeResponse execute() {
-        country.setTroopcount(troopCount);
+        country.setTroopCount(troopCount);
         player.setInactiveTroops(player.getInactiveTroops() - troopCount);
         response.setStatus(SUCCESS);
         response.setMessage(String.format("Es wurden erfolgreich %s Figuren auf %s gesetzt.", troopCount, country.getRegion().getName()));

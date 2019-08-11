@@ -10,7 +10,7 @@ import lombok.Setter;
 public class Player {
     private String name;
     private Color color;
-	private Missions mission;
+	private Mission mission;
 	private int inactiveTroops;
 	private CardsStack cards;
 	private boolean conquered = false;

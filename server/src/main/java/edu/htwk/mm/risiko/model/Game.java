@@ -17,6 +17,7 @@ public class Game {
 
 	private String name;
     private boolean conquerWorld;
+    private List<Color> availableColors;
 	private boolean started;
 	private List<Player> players;
 	private Color activePlayer;

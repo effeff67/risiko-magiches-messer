@@ -12,10 +12,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Country {
-	
+
 	private Region region;
 	private List<Region> neighborhood;
 	private Color holder;
-	private int troopcount;
+	private int troopCount;
 
 }
