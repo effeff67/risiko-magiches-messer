@@ -35,36 +35,40 @@
 
 <style scoped>
 
-    #playerMission {
+
+
+
+    #playerActionConsole, #playerFigureStack, #playerCardStack, #playerMission {
         position: absolute;
+    }
+
+    #playerMission {
         width: 1152px;
-        bottom: 0;
+        top: 712px;
         height: 109px;
         background-color: #e06363;
     }
 
-
-    #playerActionConsole, #playerFigureStack, #playerCardStack {
-        position: absolute;
-        left: 80%;
-        width: 20%;
-    }
-
     #playerActionConsole {
         top: 0;
-        height: 60%;
+        left: 1152px;
+        height: 500px;
+        width: 320px;
         background-color: #c1e8c6;
     }
 
     #playerFigureStack {
-        bottom: 0;
-        height: 7%;
+        top: 712px;
+        height: 109px;
+        left: 1152px;
+        width: 320px;
         background-color: #98d6a0;
     }
 
     #playerCardStack {
-        top: 60%;
-        height: 33%;
+        top: 500px;
+        height: 212px;
+        width: 320px;
         background-color:#508a57;
     }
 </style>

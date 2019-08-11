@@ -18,10 +18,8 @@ export default {
 
 <style scoped>
     #playerMission {
-        font: bold;
         font-family: Georgia;
         color: black;
-        background-position: center ;
     }
 
 </style>
