@@ -46,7 +46,7 @@ export default new Vuex.Store({
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(options.request)
             }).then(json => {
-                this.state.player = options.request.player
+                this.dispatch('setPlayer', options.request.player)
                 if (json && 'SUCCESS' === json.status) {
                     console.log(JSON.stringify(json), options.gameName)
                     this.dispatch('loadGame', options.gameName)
@@ -79,8 +79,13 @@ export default new Vuex.Store({
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(options.request)
             }).then(json => {
-                state.game = json.game
-                state.player = options.request.player
+                this.dispatch('setPlayer', options.request.player)
+                if (json && 'SUCCESS' === json.status) {
+                    console.log(JSON.stringify(json), options.gameName)
+                    this.dispatch('loadGame', options.gameName)
+                }else {
+                    console.error('kein json oder ohne success')
+                }
             }).catch(reason => {
                 this.commit('setFailure', reason)
             })
