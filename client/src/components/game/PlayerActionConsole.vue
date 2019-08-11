@@ -1,7 +1,7 @@
 <template>
     <div id="playerActionConsole">
         <div id="playersInfo">
-            <span v-for="player in gameToPlay.players" :class="player.color">{{ player.name}}</span>
+            <span v-for="player in gameToPlay.players" :class="[player.color, activePlayer(player.color) ]">{{ player.name}}</span>
         </div>
         <div v-if="!gameToPlay.started">
             <div v-if="gameToPlay.players[0].color == mePlayer.color">
@@ -18,21 +18,22 @@
             </div>
         </div>
         <div v-else>
-
-            <button>attack</button>
-            <br/>
-            <button>bewegen</button>
-            <br/>
-            <button>Karten eintauschen</button>
-            <br/>
-            <button>Truppen plazieren</button>
-            <br/>
-            <input id="ausgangsland"/><br/>
-            <label for="ausgangsland">Wähle ein Ausgangsland!</label><br/>
-            <input id="zielland"/><br/>
-            <label for="zielland">Wähle ein Zielland!</label><br/>
-            <input id="troopcount"/><br/>
-            <label for="troopcount">Bestimme die Truppenzahl!</label><br/>
+            <div v-if="gameToPlay.activePlayer == mePlayer.color">
+                <button>attack</button>
+                <br/>
+                <button>bewegen</button>
+                <br/>
+                <button>Karten eintauschen</button>
+                <br/>
+                <button>Truppen plazieren</button>
+                <br/>
+                <input id="ausgangsland"/><br/>
+                <label for="ausgangsland">Wähle ein Ausgangsland!</label><br/>
+                <input id="zielland"/><br/>
+                <label for="zielland">Wähle ein Zielland!</label><br/>
+                <input id="troopcount"/><br/>
+                <label for="troopcount">Bestimme die Truppenzahl!</label><br/>
+            </div>
         </div>
 
     </div>
@@ -50,9 +51,11 @@
     }),
     methods: {
       startGame: function () {
-        // console.log(this.mePlayer)
         this.$store.dispatch('changeGame', new GameChangeRequest(this.mePlayer, 'startGame', {}))
-      }
+      },
+      activePlayer(color) {
+        return this.gameToPlay.activePlayer === color ? 'active' : 'inactive'
+      },
     },
   }
 </script>
@@ -77,7 +80,9 @@
         text-align: center;
         float: left;
     }
-
+    .inactive {
+        opacity: .5;
+    }
     .rot {
         background: red;
     }
@@ -88,8 +93,8 @@
     }
 
     .violett {
-        background: black;
-        color: grey;
+        background: blueviolet;
+        color: white;
     }
 
     .gelb {

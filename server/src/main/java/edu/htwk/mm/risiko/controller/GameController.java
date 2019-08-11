@@ -95,9 +95,10 @@ public class GameController {
             if (response.getStatus() == Status.SUCCESS) {
                 return ResponseEntity.ok(response);
             }
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new GameChangeResponse(Status.ERROR, e.getMessage()));
         }
     }
 

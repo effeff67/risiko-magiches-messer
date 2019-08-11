@@ -48,7 +48,7 @@ public class StartGameExec implements CommandExecutor {
             }
         }
          */
-        return response;
+        return response.setMessage("Spiel gestartet");
     }
 
     private void setRegions() {
@@ -87,7 +87,7 @@ public class StartGameExec implements CommandExecutor {
     }
 
     private void setMissions() {
-        List<Mission> missions = Arrays.asList(Mission.values());
+        ArrayList<Mission> missions = new ArrayList<Mission>(Arrays.asList(Mission.values()));
         Collections.shuffle(missions);
         game.getPlayers().forEach(player -> player.setMission(missions.remove(0)));
     }

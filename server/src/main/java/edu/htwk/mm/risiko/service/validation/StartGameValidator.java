@@ -15,14 +15,14 @@ public class StartGameValidator implements CommandValidator {
 
     public StartGameValidator(GameChangeRequest commandRequest) {
         this.request = commandRequest;
-        this.response = new GameChangeResponse();
+        this.response = new GameChangeResponse(Status.ERROR);
     }
 
     @Override
     public CommandExecutor validate(Game game) {
         if(game.getPlayers().size() > 1 && game.getPlayers().size() <= 5
                 && !game.isStarted()) {
-            return new StartGameExec(game, request, response);
+            return new StartGameExec(game, request, response.setStatus(Status.SUCCESS));
         } else {
             response.setStatus(Status.ERROR);
             response.setMessage("Anzahl der Spieler ist falsch oder das Spiel wurde bereits gestartet.");

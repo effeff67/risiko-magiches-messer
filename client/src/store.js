@@ -87,7 +87,7 @@ export default new Vuex.Store({
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(gameChangeRequest)
             }).then(json => {
-                // todo if success reload game
+                console.log(JSON.stringify(json))
 
             }).catch(reason => {
                 this.commit('setFailure', reason)

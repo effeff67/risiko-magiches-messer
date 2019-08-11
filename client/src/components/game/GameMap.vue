@@ -1,6 +1,7 @@
 <template>
   <div id="gameMap" :style="{'background-image': 'url(' + require('@/assets/ClassicMap.png') + ')'}">
-      <div id="alaska" class="regionTroops">00</div>
+      <div v-for="region in allRegions()" :id="region.name" :class="['regionTroops', region.holder ]">{{ region.troops }}</div>
+      <!-- <div id="alaska" class="regionTroops">00</div>
       <div id="alberta" class="regionTroops">00</div>
       <div id="ägypten" class="regionTroops">00</div>
       <div id="afghanistan" class="regionTroops">00</div>
@@ -41,7 +42,7 @@
       <div id="westaustralien" class="regionTroops">00</div>
       <div id="westeuropa" class="regionTroops">00</div>
       <div id="weststaaten" class="regionTroops">00</div>
-      <div id="zentralafrika" class="regionTroops">00</div>
+      <div id="zentralafrika" class="regionTroops">00</div> -->
 
   </div>
 
@@ -53,9 +54,23 @@
 export default {
   name: 'GameMap',
   computed: mapState({
-        game: state => state.game,
+        gameToPlay: state => state.game,
       }
   ),
+  methods: {
+    allRegions() {
+      let regions = [];
+      let continentList = this.gameToPlay.gameMap.continentList;
+      for(let i = 0; i < continentList.length; i++) {
+        let countries = continentList[i].countries;
+        for(let j = 0; j < countries.length; j++) {
+          let country = countries[j];
+          regions.push({name: country.region.toLowerCase().replace(' ',''), troops: country.troopCount, holder: country.holder });
+        }
+      }
+      return regions;
+    }
+  }
 }
 </script>
 
@@ -81,6 +96,26 @@ export default {
         width: 36px;
         height:28px;
         padding-top: 8px;
+    }
+    .regionTroops.violett {
+        background: blueviolet;
+        color:white;
+    }
+    .regionTroops.rot{
+        background: #e06363;
+        color: black;
+    }
+    .regionTroops.grün{
+        background: green;
+        color: white;
+    }
+    .regionTroops.gelb{
+        background: yellow;
+        color: black;
+    }
+    .regionTroops.blau{
+        background: blue;
+        color: white;
     }
     #alaska{
         top: 60px;
@@ -157,7 +192,7 @@ export default {
         right: 50px;
     }
 
-    #kamptschatka{
+    #kamtschatka{
         top: 100px;
         right: 110px;
     }

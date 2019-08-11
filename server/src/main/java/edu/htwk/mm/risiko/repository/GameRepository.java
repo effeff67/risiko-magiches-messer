@@ -84,7 +84,7 @@ public class GameRepository {
                     objectMapper.writeValue(file, game);
                     return true;
                 }
-                log.error("failed to delet old game {}", game.getName());
+                log.error("failed to delete old game {}", game.getName());
             } else {
                 log.error("failed to find game file games/{}.json", game.getName());
             }
