@@ -89,6 +89,7 @@ public class GameController {
     @PostMapping(path = "/{name}")
     public ResponseEntity<GameChangeResponse> changeGame(@PathVariable("name") String gameName,
                                                          @RequestBody() GameChangeRequest gameCommand) {
+        log.info("change game requested");
         try {
             GameChangeResponse response = gameService.changeGame(gameName, gameCommand);
             if (response.getStatus() == Status.SUCCESS) {

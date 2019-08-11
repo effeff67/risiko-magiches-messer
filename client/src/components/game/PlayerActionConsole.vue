@@ -3,22 +3,44 @@
         <div id="playersInfo">
             <span v-for="player in gameToPlay.players" :class="player.color">{{ player.name}}</span>
         </div>
-        <button id="Spielstarten">Spiel starten </button><br/>
-        <button>attack</button><br/>
-        <button>bewegen</button><br/>
-        <button>Karten eintauschen</button><br/>
-        <button>Truppen plazieren</button><br/>
-        <input id="ausgangsland"/><br/>
-        <label for="ausgangsland">Wähle ein Ausgangsland!</label><br/>
-        <input id="zielland"/><br/>
-        <label for="zielland">Wähle ein Zielland!</label><br/>
-        <input id="troopcount"/><br/>
-        <label for="troopcount">Bestimme die Truppenzahl!</label><br/>
+        <div v-if="!gameToPlay.started">
+            <div v-if="gameToPlay.players[0].color == mePlayer.color">
+                <div v-if="gameToPlay.players.length > 2">
+                    <button id="Spielstarten" @click="startGame">Spiel starten</button>
+                    <br/>
+                </div>
+                <div v-else>
+                    <p>Warte bis sich genügend Mitspieler eingefunden haben!</p>
+                </div>
+            </div>
+            <div v-else>
+                <p>Warte bis der Spielführer das Spiel gestartet hat!</p>
+            </div>
+        </div>
+        <div v-else>
+
+            <button>attack</button>
+            <br/>
+            <button>bewegen</button>
+            <br/>
+            <button>Karten eintauschen</button>
+            <br/>
+            <button>Truppen plazieren</button>
+            <br/>
+            <input id="ausgangsland"/><br/>
+            <label for="ausgangsland">Wähle ein Ausgangsland!</label><br/>
+            <input id="zielland"/><br/>
+            <label for="zielland">Wähle ein Zielland!</label><br/>
+            <input id="troopcount"/><br/>
+            <label for="troopcount">Bestimme die Truppenzahl!</label><br/>
+        </div>
+
     </div>
 </template>
 
 <script>
   import { mapState } from 'vuex'
+  import { GameChangeRequest } from '@/shared/model/GameChangeRequest'
 
   export default {
     name: 'PlayerActionConsole',
@@ -27,41 +49,57 @@
       mePlayer: state => state.player,
     }),
     methods: {
-      allPlayers: function () {
-        return null
+      startGame: function () {
+        // console.log(this.mePlayer)
+        this.$store.dispatch('changeGame', new GameChangeRequest(this.mePlayer, 'startGame', {}))
       }
     },
   }
 </script>
 
 <style scoped>
-    #playerActionConsole{
+    #playerActionConsole {
         font-family: Georgia;
         font-size: 10pt;
         color: black;
         text-align: center;
     }
-    #Spielstarten{
+
+    #Spielstarten {
 
     }
+
     #playersInfo span {
         margin: 4px;
         padding: 4px;
         display: grid;
-        width: 35px;
+        min-width: 35px;
         text-align: center;
         float: left;
     }
+
     .rot {
         background: red;
     }
+
     .grün {
         background: green;
-        color:white;
+        color: white;
     }
+
     .violett {
         background: black;
-        color:grey;
+        color: grey;
+    }
+
+    .gelb {
+        background: yellow;
+        color: black;
+    }
+
+    .blau {
+        background: blue;
+        color: white;
     }
 
 </style>
