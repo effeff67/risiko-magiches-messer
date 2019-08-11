@@ -5,8 +5,15 @@
         </div>
         <form v-else @submit.prevent="handleSubmit">
             <div>
+                <img alt="Logo" src="@/assets/RisikoLogo.png" id="Logo"/>
+                <br>
+            </div>
+            <div>
+                <br/>
+                <br/>
                 <input v-model="playerName" id="playerName"/><br/>
-                <label for="playerName">Dein Spieler name</label>
+                <label for="playerName">Dein Spielername</label>
+                <br>
             </div>
             <div v-if="selectableGames.length > 0">
                 <select v-model="selectedGameName" id="gameName">
@@ -15,14 +22,15 @@
                 </select><br/>
                 <label for="gameName">Wähle ein Spiel</label>
             </div>
+
             <div>
                 <p>Neues Spiel?</p>
                 <select v-model="newGameMapName">
                     <option disabled value="--">Wähle eine Map zum Spielen!</option>
                     <option v-for="map in newGameMaps" v-bind:value="map.name"> {{ map.name }}</option>
-                </select><br/>
-                <input v-model="newGameName" id="newGameName"/><br/>
-                <label for="newGameName">Spielname (ohne Leerzeichen)</label><br/>
+                </select><br/><br>
+                <input v-model="newGameName" id="newGameName"/><br/><br>
+                <label for="newGameName">Spielname (ohne Leerzeichen)</label><br/><br>
                 <input type="checkbox" v-model="newGameConquerTheWorld" value="true" id="conquerTheWorld"/><br/>
                 <label for="conquerTheWorld">Global Mission Welteroberung für alle!</label>
             </div>
@@ -37,6 +45,8 @@
             </div>
 
         </form>
+        <img alt="Schlacht Links" src="@/assets/Schlacht Links.png" id="Schlachtlinks"/>
+        <img alt="Schlacht Rechts" src="@/assets/Schlacht Rechts.png" id="Schlachtrechts"/>
     </div>
 </template>
 
@@ -109,5 +119,39 @@
 </script>
 
 <style scoped>
+
+#Start {
+    margin-top: 5%;
+    background-color: #508a57;
+    width: 100%;
+    height: 100%;
+    font-family: Georgia;
+    font-size: 15pt;
+    color: black;
+    text-align: center;
+}
+
+#Logo {
+    width: 20%;
+    height: auto;
+}
+
+#Schlachtlinks {
+    width: 35%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+
+}
+
+#Schlachtrechts {
+    width: 35%;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
 
 </style>

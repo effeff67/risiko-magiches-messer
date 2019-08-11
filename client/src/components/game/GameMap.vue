@@ -1,5 +1,7 @@
 <template>
-  <div id="gameMap"></div>
+  <div id="gameMap" :style="{'background-image': 'url(' + require('@/assets/ClassicMap.png') + ')'}">
+  </div>
+
 </template>
 
 <script>
@@ -10,5 +12,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+    #gameMap
+    {
+        width: 80%;
+        position: absolute;
+        top: 0;
+        height: 95%;
+        background-repeat: no-repeat;
+        background-size: 105%;
+        background-position: center;
+    }
 </style>
