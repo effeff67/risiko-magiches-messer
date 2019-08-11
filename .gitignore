@@ -3,7 +3,7 @@
 
 server/target
 server/bin
-server/games
+server/games/*.jsom
 client/node_modules
 
 .DS_Store
