@@ -62,7 +62,7 @@
         left: 1152px;
         height: 500px;
         width: 320px;
-        background-color: #c1e8c6;
+        background-color: #84ad89;
     }
 
     #playerFigureStack {
@@ -70,13 +70,14 @@
         height: 109px;
         left: 1152px;
         width: 320px;
-        background-color: #98d6a0;
+        background-color: #84ad89;
     }
 
     #playerCardStack {
         top: 500px;
         height: 212px;
         width: 320px;
+        left: 1152px;
         background-color:#508a57;
     }
 </style>

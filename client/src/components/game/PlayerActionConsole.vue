@@ -3,27 +3,35 @@
         <div id="playersInfo">
             <span v-for="player in gameToPlay.players" :class="player.color">{{ player.name}}</span>
         </div>
+        <button id="Spielstarten">Spiel starten </button><br/>
+        <button id="Angreifen">Angreifen</button><br/>
+        <button id="Bewegen">Bewegen</button><br/>
+        <button id="Truppenplatzieren">Truppen plazieren</button><br/>
+        <input id="ausgangsland"/><br/>
+        <label id="Lableausgangsland" for="Ausgangsland">Wähle ein Ausgangsland!</label><br/>
+        <input id="Zielland"/><br/>
+        <label id="Lablezielland" for="Zielland">Wähle ein Zielland!</label><br/>
+        <input id="Troopcount"/><br/>
+        <label id="Labletroopcount" for="Troopcount">Bestimme die Truppenzahl!</label><br/>
         <div v-if="!gameToPlay.started">
             <div v-if="gameToPlay.players[0].color == mePlayer.color">
                 <div v-if="gameToPlay.players.length > 2">
                     <button id="Spielstarten" @click="startGame">Spiel starten</button>
                     <br/>
                 </div>
-                <div v-else>
+                <div v-else id="WarteaufMitspieler">
                     <p>Warte bis sich genügend Mitspieler eingefunden haben!</p>
                 </div>
             </div>
-            <div v-else>
+            <div v-else id="WarteaufSpielstart">
                 <p>Warte bis der Spielführer das Spiel gestartet hat!</p>
             </div>
         </div>
         <div v-else>
 
-            <button>attack</button>
+            <button>Angreifen</button>
             <br/>
-            <button>bewegen</button>
-            <br/>
-            <button>Karten eintauschen</button>
+            <button>Bewegen</button>
             <br/>
             <button>Truppen plazieren</button>
             <br/>
@@ -58,16 +66,41 @@
 </script>
 
 <style scoped>
-    #playerActionConsole {
+    #playersInfo{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    #playerActionConsole{
         font-family: Georgia;
         font-size: 10pt;
         color: black;
         text-align: center;
     }
-
-    #Spielstarten {
-
+    #Spielstarten{
+        position: absolute;
+        top: 100px;
+        left: 30px;
     }
+
+    #Angreifen{
+        position: absolute;
+        top: 125px;
+        left: 30px;
+    }
+
+    #Bewegen{
+        position: absolute;
+        top: 150px;
+        left: 30px;
+    }
+
+    #Truppenplatzieren{
+        position: absolute;
+        top: 175px;
+        left: 30px;
+    }
+
 
     #playersInfo span {
         margin: 4px;
@@ -77,6 +110,57 @@
         text-align: center;
         float: left;
     }
+
+    #WarteaufMitspieler{
+        position: absolute;
+        top: 60px;
+    }
+
+    #WarteaufSpielstart{
+        position: absolute;
+        top: 60px;
+    }
+
+    #ausgangsland{
+        position: absolute;
+        top: 200px;
+        left: 30px;
+
+    }
+
+    #Lableausgangsland{
+        position: absolute;
+        top: 225px;
+        left: 30px;
+    }
+
+    #Zielland{
+        position: absolute;
+        top: 245px;
+        left: 30px;
+
+    }
+
+    #Lablezielland{
+        position: absolute;
+        top: 270px;
+        left: 30px;
+    }
+
+    #Troopcount{
+        position: absolute;
+        top: 290px;
+        left: 30px;
+
+    }
+
+    #Labletroopcount{
+        position: absolute;
+        top: 315px;
+        left: 30px;
+    }
+
+
 
     .rot {
         background: red;
@@ -88,8 +172,8 @@
     }
 
     .violett {
-        background: black;
-        color: grey;
+        background: blueviolet;
+        color: white;
     }
 
     .gelb {
