@@ -1,20 +1,17 @@
 package edu.htwk.mm.risiko.service;
 
 
-import edu.htwk.mm.risiko.model.Cards;
-import edu.htwk.mm.risiko.model.GameMap;
-import edu.htwk.mm.risiko.model.api.GameChangeResponse;
-import edu.htwk.mm.risiko.model.api.GameChangeRequest;
-import edu.htwk.mm.risiko.model.GameList;
 import edu.htwk.mm.risiko.model.Game;
+import edu.htwk.mm.risiko.model.GameList;
+import edu.htwk.mm.risiko.model.GameMap;
 import edu.htwk.mm.risiko.model.Player;
 import edu.htwk.mm.risiko.model.Status;
+import edu.htwk.mm.risiko.model.api.GameChangeRequest;
+import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.repository.GameMapRepository;
 import edu.htwk.mm.risiko.repository.GameRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-
-import java.util.Arrays;
 
 @Service
 public class GameService {

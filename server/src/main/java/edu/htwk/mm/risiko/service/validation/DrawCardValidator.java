@@ -1,6 +1,5 @@
 package edu.htwk.mm.risiko.service.validation;
 
-import com.sun.net.httpserver.Authenticator;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Player;
 import edu.htwk.mm.risiko.model.Status;

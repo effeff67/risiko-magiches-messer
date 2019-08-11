@@ -2,8 +2,8 @@ package edu.htwk.mm.risiko.service.validation;
 
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Status;
-import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
+import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.service.execution.CommandExecutor;
 import edu.htwk.mm.risiko.service.execution.InvalidCommandExec;
 import edu.htwk.mm.risiko.service.execution.StartGameExec;

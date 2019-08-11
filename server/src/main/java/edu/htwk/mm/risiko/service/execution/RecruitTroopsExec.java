@@ -2,11 +2,8 @@ package edu.htwk.mm.risiko.service.execution;
 
 import edu.htwk.mm.risiko.model.Continent;
 import edu.htwk.mm.risiko.model.Game;
-import edu.htwk.mm.risiko.model.GameMap;
 import edu.htwk.mm.risiko.model.Player;
-import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
-import edu.htwk.mm.risiko.model.api.GameCommandRequest;
 
 import java.util.List;
 

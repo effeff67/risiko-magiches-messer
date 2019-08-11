@@ -6,7 +6,10 @@ import edu.htwk.mm.risiko.model.Occupation;
 import edu.htwk.mm.risiko.model.Player;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class AttackRegionExec implements CommandExecutor {
 

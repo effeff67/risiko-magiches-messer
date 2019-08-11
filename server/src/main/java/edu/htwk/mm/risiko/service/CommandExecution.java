@@ -1,7 +1,18 @@
 package edu.htwk.mm.risiko.service;
 
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
-import edu.htwk.mm.risiko.service.validation.*;
+import edu.htwk.mm.risiko.service.validation.AddPlayerValidator;
+import edu.htwk.mm.risiko.service.validation.AttackRegionValidator;
+import edu.htwk.mm.risiko.service.validation.CommandValidator;
+import edu.htwk.mm.risiko.service.validation.DrawCardValidator;
+import edu.htwk.mm.risiko.service.validation.InvalidCommandValidation;
+import edu.htwk.mm.risiko.service.validation.MoveTroopAfterOccupationValidation;
+import edu.htwk.mm.risiko.service.validation.MoveTroopValidator;
+import edu.htwk.mm.risiko.service.validation.PlaceTroopValidator;
+import edu.htwk.mm.risiko.service.validation.PlaceTroopsValidator;
+import edu.htwk.mm.risiko.service.validation.RecruitTroopsValidator;
+import edu.htwk.mm.risiko.service.validation.StartGameValidator;
+import edu.htwk.mm.risiko.service.validation.TradeCardsInValidator;
 import org.springframework.stereotype.Service;
 
 @Service

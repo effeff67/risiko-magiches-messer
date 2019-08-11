@@ -4,14 +4,13 @@ import edu.htwk.mm.risiko.model.Country;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Mission;
 import edu.htwk.mm.risiko.model.Player;
-import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
+import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.service.util.CircularPlayerIterator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-
 import java.util.List;
 
 public class StartGameExec implements CommandExecutor {

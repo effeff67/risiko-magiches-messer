@@ -3,7 +3,6 @@ package edu.htwk.mm.risiko.service.execution;
 import edu.htwk.mm.risiko.model.Cards;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Player;
-import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 
 import java.util.List;

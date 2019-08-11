@@ -1,7 +1,7 @@
 package edu.htwk.mm.risiko.service.execution;
 
-import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.model.Status;
+import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 
 public class InvalidCommandExec implements CommandExecutor {
 
