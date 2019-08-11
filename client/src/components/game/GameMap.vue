@@ -1,48 +1,11 @@
 <template>
   <div id="gameMap" :style="{'background-image': 'url(' + require('@/assets/ClassicMap.png') + ')'}">
-      <div v-for="region in allRegions()" :id="region.name" :class="['regionTroops', region.holder ]">{{ region.troops }}</div>
-      <!-- <div id="alaska" class="regionTroops">00</div>
-      <div id="alberta" class="regionTroops">00</div>
-      <div id="ägypten" class="regionTroops">00</div>
-      <div id="afghanistan" class="regionTroops">00</div>
-      <div id="argentinien" class="regionTroops">00</div>
-      <div id="brasilien" class="regionTroops">00</div>
-      <div id="china" class="regionTroops">00</div>
-      <div id="grönland" class="regionTroops">00</div>
-      <div id="großbritannien" class="regionTroops">00</div>
-      <div id="indien" class="regionTroops">00</div>
-      <div id="indonesien" class="regionTroops">00</div>
-      <div id="irkutsk" class="regionTroops">00</div>
-      <div id="island" class="regionTroops">00</div>
-      <div id="jakutien" class="regionTroops">00</div>
-      <div id="japan" class="regionTroops">00</div>
-      <div id="kamptschatka" class="regionTroops">00</div>
-      <div id="madagaskar" class="regionTroops">00</div>
-      <div id="mittelamerika" class="regionTroops">00</div>
-      <div id="mongolei" class="regionTroops">00</div>
-      <div id="naherosten" class="regionTroops">00</div>
-      <div id="neuguinea" class="regionTroops">00</div>
-      <div id="nordafrika" class="regionTroops">00</div>
-      <div id="nordeuropa" class="regionTroops">00</div>
-      <div id="nordwest-territorium" class="regionTroops">00</div>
-      <div id="ontario" class="regionTroops">00</div>
-      <div id="ostafrika" class="regionTroops">00</div>
-      <div id="ostaustralien" class="regionTroops">00</div>
-      <div id="ostkanada" class="regionTroops">00</div>
-      <div id="oststaaten" class="regionTroops">00</div>
-      <div id="peru" class="regionTroops">00</div>
-      <div id="russland" class="regionTroops">00</div>
-      <div id="sibirien" class="regionTroops">00</div>
-      <div id="skandinavien" class="regionTroops">00</div>
-      <div id="südafrika" class="regionTroops">00</div>
-      <div id="südeuropa" class="regionTroops">00</div>
-      <div id="südostasien" class="regionTroops">00</div>
-      <div id="ural" class="regionTroops">00</div>
-      <div id="venezuela" class="regionTroops">00</div>
-      <div id="westaustralien" class="regionTroops">00</div>
-      <div id="westeuropa" class="regionTroops">00</div>
-      <div id="weststaaten" class="regionTroops">00</div>
-      <div id="zentralafrika" class="regionTroops">00</div> -->
+      <div v-for="region in allRegions()"
+           :id="region.name"
+           :class="['regionTroops', region.holder ]"
+           @click="function() {regionClicked(region);}">
+          {{ region.troops }}
+      </div>
 
   </div>
 
@@ -69,6 +32,9 @@ export default {
         }
       }
       return regions;
+    },
+    regionClicked: function(region) {
+      this.$store.commit('regionClicked',region)
     }
   }
 }
@@ -212,7 +178,7 @@ export default {
         right: 165px;
     }
 
-    #naherosten{
+    #naher-osten{
         bottom: 320px;
         right: 430px;
     }

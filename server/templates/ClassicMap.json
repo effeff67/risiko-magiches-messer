@@ -164,7 +164,7 @@
             "Südeuropa",
             "Ural",
             "Afghanistan",
-            "Naher Osten"
+            "Naher-Osten"
           ]
         },
       {
@@ -182,7 +182,7 @@
             "Westeuropa",
             "Nordeuropa",
             "Russland",
-            "Naher Osten",
+            "Naher-Osten",
             "Ägypten",
             "Nordafrika"
           ]
@@ -218,7 +218,7 @@
             "Madagaskar",
             "Nordafrika",
             "Südafrika",
-            "Naher Osten"
+            "Naher-Osten"
           ]
         },
         {
@@ -226,7 +226,7 @@
           "neighborhood": [
             "Nordafrika",
             "Ostafrika",
-            "Naher Osten",
+            "Naher-Osten",
             "Südeuropa"
           ]
         },
@@ -269,7 +269,7 @@
             "Ural",
             "China",
             "Indien",
-            "Naher Osten"
+            "Naher-Osten"
           ]
         },
         {
@@ -286,7 +286,7 @@
         {
           "region": "Indien",
           "neighborhood": [
-            "Naher Osten",
+            "Naher-Osten",
             "Afghanistan",
             "China",
             "Südostasien"
@@ -326,7 +326,7 @@
           ]
         },
         {
-          "region": "Naher Osten",
+          "region": "Naher-Osten",
           "neighborhood": [
             "Afghanistan",
             "Indien",

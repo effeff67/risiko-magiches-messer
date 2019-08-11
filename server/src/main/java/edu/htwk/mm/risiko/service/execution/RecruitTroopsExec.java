@@ -30,6 +30,6 @@ public class RecruitTroopsExec implements CommandExecutor {
             bonus = 3;
         }
         player.setInactiveTroops(player.getInactiveTroops() + bonus);
-        return response;
+        return response.setMessage("Truppen rekrutiert");
     }
 }

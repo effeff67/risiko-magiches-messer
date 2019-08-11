@@ -21,6 +21,9 @@ export default new Vuex.Store({
         setFailure (state, failure) {
             state.failure = failure
         },
+        regionClicked(state, region){
+            state.lastClickedRegion = region;
+        },
         removeGame: state => state.game = null,
     },
     actions: {
@@ -102,5 +105,7 @@ export default new Vuex.Store({
         game: JSON.parse(localStorage.getItem('game')),
         player: JSON.parse(localStorage.getItem('player')),
         failure: '',
+        lastClickedRegion: null,
+
     },
 })

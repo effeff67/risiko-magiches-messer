@@ -11,7 +11,7 @@ public class GameEntityFinder {
     public static Country findCountryByName(GameMap map, String region) {
         return map.getContinentList().stream()
                 .flatMap( continent -> continent.getCountries().stream() )
-                .filter( country -> country.getRegion().getName().equals(region))
+                .filter( country -> country.getRegion().getName().toLowerCase().equals(region))
                 .findFirst().orElse(null);
     }
 

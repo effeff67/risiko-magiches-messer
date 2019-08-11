@@ -28,7 +28,7 @@ public enum Region {
     JAKUTIEN("Jakutien"),
     JAPAN("Japan"),
     KAMCHATKA("Kamtschatka"),
-    MIDDLE_EAST("Naher Osten"),
+    MIDDLE_EAST("Naher-Osten"),
     MONGOLIA("Mongolei"),
     SIBIRIA("Sibirien"),
     SOUTHEAST_ASIA("Südostasien"),

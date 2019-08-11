@@ -31,7 +31,7 @@
           let vm = this;
           setTimeout(function () {
             vm.$store.dispatch('reloadGame')
-          }, 15000);
+          }, 1000);
           return state.game
         } else {
           this.$router.back()

@@ -1,18 +1,27 @@
 <template>
     <div id="playerMission">
-        {{mission}}
+        {{ getPlayerMission() }}
     </div>
 </template>
 
 <script>
-export default {
-    name: "PlayerMission",
-    data: function(){
-      return {
-        mission: 'not set',
+  import { mapState } from 'vuex'
+
+  export default {
+    name: 'PlayerMission',
+
+    computed: mapState({
+      gameToPlay: state => state.game,
+      mePlayer: state => state.player,
+    }),
+    methods: {
+      getPlayerMission () {
+        return this.gameToPlay.players.filter((player) => {
+          if (player.color === this.mePlayer.color) return player
+        })[0].mission
       }
-    }
-}
+    },
+  }
 
 </script>
 

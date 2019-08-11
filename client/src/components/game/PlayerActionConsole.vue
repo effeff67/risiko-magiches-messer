@@ -17,21 +17,26 @@
                 <p>Warte bis der Spielführer das Spiel gestartet hat!</p>
             </div>
         </div>
-        <div v-else>
-            <div v-if="gameToPlay.activePlayer == mePlayer.color">
+        <div v-if="gameToPlay.activePlayer == mePlayer.color">
+            <div v-if="gameToPlay.ready" id="actionButtons">
+                <button @click="recruitTroops">Rekrutieren</button>
                 <button>Angreifen</button>
                 <br/>
-            <button>Bewegen</button>
-            <br/>
-            <button>Karten eintauschen</button>
+                <button>Bewegen</button>
                 <br/>
-                <button id="Truppenplatzieren">Truppen plazieren</button><br/>
+                <button id="Truppenplatzieren">Truppen plazieren</button>
+                <br/>
                 <input id="ausgangsland"/><br/>
                 <label id="Lableausgangsland" for="Ausgangsland">Wähle ein Ausgangsland!</label><br/>
                 <input id="Zielland"/><br/>
                 <label id="Lablezielland" for="Zielland">Wähle ein Zielland!</label><br/>
                 <input id="Troopcount"/><br/>
                 <label id="Labletroopcount" for="Troopcount">Bestimme die Truppenzahl!</label><br/>
+            </div>
+            <div v-else>
+                <div v-if="lastClickedRegion">
+                    <button @click="placeTroop">1 auf {{ lastClickedRegion.name }} Plazieren</button>
+                </div>
             </div>
         </div>
 
@@ -47,12 +52,19 @@
     computed: mapState({
       gameToPlay: state => state.game,
       mePlayer: state => state.player,
+      lastClickedRegion: state => state.lastClickedRegion
     }),
     methods: {
       startGame: function () {
         this.$store.dispatch('changeGame', new GameChangeRequest(this.mePlayer, 'startGame', {}))
       },
-      activePlayer(color) {
+      placeTroop: function() {
+        this.$store.dispatch('changeGame', new GameChangeRequest(this.mePlayer, 'placeTroop', {country: this.lastClickedRegion.name}))
+      },
+      recruitTroops: function () {
+        this.$store.dispatch('changeGame', new GameChangeRequest(this.mePlayer, 'recruitTroops', {}))
+      },
+      activePlayer (color) {
         return this.gameToPlay.activePlayer === color ? 'active' : 'inactive'
       },
     },
@@ -60,36 +72,42 @@
 </script>
 
 <style scoped>
-    #playersInfo{
-        position: absolute;
+    #playersInfo {
         top: 10px;
         left: 10px;
+        height: 35px;
     }
-    #playerActionConsole{
+
+    #actionButtons {
+        position: absolute;
+    }
+
+    #playerActionConsole {
         font-family: Georgia;
         font-size: 10pt;
         color: black;
         text-align: center;
     }
-    #Spielstarten{
+
+    #Spielstarten {
         position: absolute;
         top: 100px;
         left: 30px;
     }
 
-    #Angreifen{
+    #Angreifen {
         position: absolute;
         top: 125px;
         left: 30px;
     }
 
-    #Bewegen{
+    #Bewegen {
         position: absolute;
         top: 150px;
         left: 30px;
     }
 
-    #Truppenplatzieren{
+    #Truppenplatzieren {
         position: absolute;
         top: 175px;
         left: 30px;
@@ -104,59 +122,59 @@
         text-align: center;
         float: left;
     }
+
     .inactive {
         opacity: .5;
     }
 
-    #WarteaufMitspieler{
+    #WarteaufMitspieler {
         position: absolute;
         top: 60px;
     }
 
-    #WarteaufSpielstart{
+    #WarteaufSpielstart {
         position: absolute;
         top: 60px;
     }
 
-    #ausgangsland{
+    #ausgangsland {
         position: absolute;
         top: 200px;
         left: 30px;
 
     }
 
-    #Lableausgangsland{
+    #Lableausgangsland {
         position: absolute;
         top: 225px;
         left: 30px;
     }
 
-    #Zielland{
+    #Zielland {
         position: absolute;
         top: 245px;
         left: 30px;
 
     }
 
-    #Lablezielland{
+    #Lablezielland {
         position: absolute;
         top: 270px;
         left: 30px;
     }
 
-    #Troopcount{
+    #Troopcount {
         position: absolute;
         top: 290px;
         left: 30px;
 
     }
 
-    #Labletroopcount{
+    #Labletroopcount {
         position: absolute;
         top: 315px;
         left: 30px;
     }
-
 
 
     .rot {

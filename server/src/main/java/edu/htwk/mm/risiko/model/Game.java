@@ -21,6 +21,7 @@ public class Game {
     private boolean conquerWorld;
     private List<Color> availableColors;
 	private boolean started;
+	private boolean ready;
 	private List<Player> players;
 	private Color activePlayer;
 	private GameMap gameMap;

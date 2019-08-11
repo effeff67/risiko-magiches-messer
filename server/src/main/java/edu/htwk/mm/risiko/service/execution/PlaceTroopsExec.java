@@ -25,7 +25,7 @@ public class PlaceTroopsExec implements CommandExecutor {
 
     @Override
     public GameChangeResponse execute() {
-        country.setTroopCount(troopCount);
+        country.setTroopCount(country.getTroopCount() + troopCount);
         player.setInactiveTroops(player.getInactiveTroops() - troopCount);
         response.setStatus(SUCCESS);
         response.setMessage(String.format("Es wurden erfolgreich %s Figuren auf %s gesetzt.", troopCount, country.getRegion().getName()));

@@ -8,6 +8,7 @@ import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.service.execution.CommandExecutor;
 import edu.htwk.mm.risiko.service.execution.InvalidCommandExec;
+import edu.htwk.mm.risiko.service.execution.PlaceTroopExec;
 import edu.htwk.mm.risiko.service.execution.PlaceTroopsExec;
 import edu.htwk.mm.risiko.service.util.GameEntityFinder;
 
@@ -18,31 +19,32 @@ public class PlaceTroopValidator implements CommandValidator {
 
     public PlaceTroopValidator(GameChangeRequest command) {
         this.command = command;
-        this.response = new GameChangeResponse();
+        this.response = new GameChangeResponse(Status.ERROR);
     }
 
     @Override
     public CommandExecutor validate(Game game) {
-        response.setStatus(Status.ERROR);
         Object countryName = command.getCommandDetails().get("country");
-        if(countryName != null) {
-            Country country = GameEntityFinder.findCountryByName(game.getGameMap(),countryName.toString());
-            if(null != country) {
-                if(country.getHolder() != command.getPlayer().getColor()) {
-                    response.setMessage("Du kontrollierst das gewählte Land nicht.");
-                    return new InvalidCommandExec(response);
-                }
-                if(1 > command.getPlayer().getInactiveTroops()){
-                    response.setMessage("Du besitzt nicht genügend Truppen.");
-                    return new InvalidCommandExec(response);
-                }
-                response.setStatus(Status.SUCCESS);
-                Player player = GameEntityFinder.findPlayerByColor(game, command.getPlayer().getColor());
-                return new PlaceTroopsExec(game, response, player, country, 1);
-            }
+        if(countryName == null) {
+            return new InvalidCommandExec(response.setMessage(String.format("kein land angegeben", countryName)));
         }
-        response.setMessage("das Land existiert nicht auf der Karte ");
-        return new InvalidCommandExec(response);
+        Country country = GameEntityFinder.findCountryByName(game.getGameMap(), countryName.toString());
+        if(country == null) {
+            return new InvalidCommandExec(response.setMessage(String.format("das land %s exitiert auf der karte nicht", countryName)));
+        }
+        Player player = GameEntityFinder.findPlayerByColor(game, command.getPlayer().getColor());
+        if(player.getColor() != game.getActivePlayer()) {
+            return new InvalidCommandExec(response.setMessage("Du bist nicht an der Reihe."));
+        }
+        if(country.getHolder() != player.getColor()) {
+            return new InvalidCommandExec(response.setMessage("Du kontrollierst das gewählte Land nicht."));
+        }
+        if(1 > player.getInactiveTroops()){
+            return new InvalidCommandExec(response.setMessage("Du besitzt nicht genügend Truppen."));
+        }
+
+        return new PlaceTroopExec(game, response.setStatus(Status.SUCCESS), player, country);
+
     }
 }
 

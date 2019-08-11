@@ -1,19 +1,29 @@
 <template>
     <div id="playerFigureStack">
-        <div id="activatedFigures">{{ countActivatedFigures }}</div><br/>
+        <div id="activatedFigures">{{ countActivatedFigures() }}</div>
+        <br/>
         <label id="LableactiveFigures">verfügbare Truppen</label>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "PlayerFiguresStack",
-        data: function() {
-            return {
-                countActivatedFigures: 0,
-            }
-        }
-    }
+  import { mapState } from 'vuex'
+
+  export default {
+    name: 'PlayerFiguresStack',
+
+    computed: mapState({
+      gameToPlay: state => state.game,
+      mePlayer: state => state.player,
+    }),
+    methods: {
+      countActivatedFigures() {
+        return this.gameToPlay.players.filter((player) => {
+          if (player.color === this.mePlayer.color) return player
+        })[0].inactiveTroops;
+      }
+    },
+  }
 </script>
 
 <style scoped>
@@ -30,7 +40,7 @@
         top: 10px;
     }
 
-    #LableactiveFigures{
+    #LableactiveFigures {
         font-family: Georgia;
         position: absolute;
         font-size: 10pt;

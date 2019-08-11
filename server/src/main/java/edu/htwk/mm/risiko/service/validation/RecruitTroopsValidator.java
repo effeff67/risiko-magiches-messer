@@ -3,6 +3,7 @@ package edu.htwk.mm.risiko.service.validation;
 import edu.htwk.mm.risiko.model.Continent;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Player;
+import edu.htwk.mm.risiko.model.Status;
 import edu.htwk.mm.risiko.model.api.GameChangeRequest;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.service.execution.CommandExecutor;
@@ -19,7 +20,7 @@ public class RecruitTroopsValidator implements CommandValidator  {
 
     public RecruitTroopsValidator(GameChangeRequest command) {
         this.command = command;
-        this.response = new GameChangeResponse();
+        this.response = new GameChangeResponse(Status.ERROR);
     }
 
     @Override
@@ -27,7 +28,7 @@ public class RecruitTroopsValidator implements CommandValidator  {
         int countryCount = calculateCountryCount(game);
         List<Continent> continents = collectContientsOwnedByPlayer(game,command.getPlayer());
         Player player = GameEntityFinder.findPlayerByColor(game, command.getPlayer().getColor());
-        return new RecruitTroopsExec(game, player, continents, countryCount, response);
+        return new RecruitTroopsExec(game, player, continents, countryCount, response.setStatus(Status.SUCCESS));
     }
 
     private List<Continent> collectContientsOwnedByPlayer(Game game, Player player) {

@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <div v-if="failure">{{ failure }}</div>
         <router-view/>
     </div>
 </template>
@@ -20,6 +21,7 @@
     },
     computed: mapState({
       riskServerRoot: state => state.serverHost,
+      failure: state => state.failure,
     }),
   }
 </script>
