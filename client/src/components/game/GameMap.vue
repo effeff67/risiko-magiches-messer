@@ -63,13 +63,14 @@ export default {
 <style scoped>
     #gameMap
     {
-        width: 80%;
+        width: 1152px;
         position: absolute;
         top: 0;
-        height: 93%;
+        height: 712px;
         background-repeat: no-repeat;
-        background-size: 103%;
+        background-size: 1152px;
         background-position: center;
+        z-index: 100;
     }
 
     .regionTroops {
@@ -82,133 +83,133 @@ export default {
         padding-top: 8px;
     }
     #alaska{
-        top: 80px;
-        left: 70px;
+        top: 60px;
+        left: 75px;
     }
 
     #alberta{
-        top: 160px;
+        top: 130px;
         left: 180px;
     }
 
     #ägypten{
-        bottom: 350px;
-        left: 700px;
+        bottom: 300px;
+        left: 600px;
     }
 
     #afghanistan{
-        top: 328px;
-        right: 400px;
+        top: 280px;
+        right: 355px;
     }
 
     #argentinien{
-        bottom: 90px;
-        left: 330px;
+        bottom: 80px;
+        left: 300px;
     }
 
     #brasilien{
-        bottom: 240px;
-        left: 400px;
+        bottom: 210px;
+        left: 380px;
     }
 
     #china{
-        top: 380px;
-        right: 250px;
+        top: 315px;
+        right: 230px;
     }
 
     #grönland{
-        top: 90px;
-        left: 450px;
+        top: 80px;
+        left: 390px;
     }
 
     #großbritannien{
-        top: 265px;
-        left: 520px;
+        top: 215px;
+        left: 449px;
     }
 
     #indien{
-        bottom: 350px;
-        right: 325px;
+        bottom: 280px;
+        right: 290px;
     }
 
     #indonesien{
-        bottom: 200px;
-        right: 255px;
+        bottom: 170px;
+        right: 225px;
     }
 
     #irkutsk{
-        top: 220px;
-        right:235px;
+        top: 180px;
+        right:215px;
     }
 
     #island{
-        top: 130px;
-        left: 550px;
+        top: 105px;
+        left: 480px;
     }
 
     #jakutien{
-        top: 60px;
-        right: 190px;
+        top: 40px;
+        right: 180px;
     }
 
     #japan{
         top: 240px;
-        right: 65px;
+        right: 50px;
     }
 
     #kamptschatka{
-        top: 120px;
-        right: 130px;
+        top: 100px;
+        right: 110px;
     }
 
     #madagaskar{
         bottom: 50px;
-        right: 435px;
+        right: 380px;
     }
 
     #mittelamerika{
-        top: 400px;
-        left: 255px;
+        top: 340px;
+        left: 230px;
     }
 
     #mongolei{
-        top: 260px;
-        right: 175px;
+        top: 220px;
+        right: 165px;
     }
 
     #naherosten{
-        bottom: 390px;
-        right: 485px;
+        bottom: 320px;
+        right: 430px;
     }
 
     #neuguinea{
-        bottom: 250px;
-        right: 130px;
+        bottom: 210px;
+        right: 125px;
     }
 
     #nordafrika{
-        bottom: 325px;
-        left: 600px
+        bottom: 270px;
+        left: 520px
     }
 
     #nordeuropa{
-        top: 300px;
-        left: 640px;
+        top: 250px;
+        left: 560px;
     }
 
     #nordwest-territorium{
-        top: 80px;
+        top: 60px;
         left: 180px;
     }
 
     #ontario{
-        top: 175px;
+        top: 146px;
         left: 265px;
     }
 
     #ostafrika{
-        bottom: 275px;
-        left: 740px;
+        bottom: 180px;
+        left: 680px;
     }
 
     #ostaustralien{
@@ -217,54 +218,53 @@ export default {
     }
 
     #ostkanada{
-        top: 220px;
-        left: 355px;
+        top: 183px;
+        left: 340px;
     }
 
     #oststaaten{
-        top: 296px;
-        left: 335px;
+        top: 240px;
+        left: 290px;
     }
 
     #peru{
-        bottom: 230px;
-        left: 278px;
+        bottom: 182px;
+        left: 254px;
     }
 
     #russland{
-        top: 265px;
-        left: 765px;
+        top: 225px;
+        left: 665px;
     }
 
     #sibirien{
-        top: 80px;
-        right: 310px;
+        top: 70px;
+        right: 280px;
     }
 
     #skandinavien{
-        top: 108px;
-        right: 585px;
+        top: 85px;
+        right: 515px;
     }
 
     #südafrika{
-        bottom: 50px;
-        left: 700px
-
+        bottom: 35px;
+        left: 615px
     }
 
     #südeuropa{
-        top: 375px;
-        left: 650px;
+        top: 315px;
+        left: 570px;
     }
 
     #südostasien{
-        bottom:315px;
-        right: 210px;
+        bottom:255px;
+        right: 195px;
     }
 
     #ural{
-        top: 150px;
-        right: 385px;
+        top: 130px;
+        right: 340px;
     }
 
     #venezuela{
@@ -273,23 +273,23 @@ export default {
     }
 
     #westaustralien{
-        bottom: 100px;
-        right: 160px;
+        bottom: 80px;
+        right: 150px;
     }
 
     #westeuropa{
-        top: 365px;
-        left: 560px;;
+        top: 300px;
+        left: 500px;;
     }
 
     #weststaaten{
-        top: 250px;
-        left: 205px;
+        top: 208px;
+        left: 200px;
     }
 
     #zentralafrika{
-        bottom: 155px;
-        left: 700px;
+        bottom: 178px;
+        left: 610px;
     }
 
 </style>

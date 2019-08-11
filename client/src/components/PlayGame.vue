@@ -37,9 +37,9 @@
 
     #playerMission {
         position: absolute;
-        width: 80%;
+        width: 1152px;
         bottom: 0;
-        height: 7%;
+        height: 109px;
         background-color: #e06363;
     }
 
