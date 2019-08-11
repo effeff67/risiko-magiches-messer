@@ -25,6 +25,9 @@
 </script>
 
 <style>
+    body {
+        margin:0;
+    }
     #app {
         top: 0;
         position: absolute;
