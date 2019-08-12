@@ -27,17 +27,22 @@ public class MoveTroopAfterOccupationValidation implements CommandValidator {
         if(occupation.getColor() != request.getPlayer().getColor()) {
             return new InvalidCommandExec(response.setMessage("Dieses Land hast du nicht erobert"));
         }
-        Integer countTroops = (Integer)request.getCommandDetails().get("countTroops");
+        Integer countTroops = Integer.parseInt((String)request.getCommandDetails().get("countTroops"));
         if(null == countTroops) {
             return new InvalidCommandExec(response.setMessage("Anzahl der Truppen invalid!"));
         }
 
-        Country source = GameEntityFinder.findCountryByName(game.getGameMap(), occupation.getSource().getName());
+        Country source = GameEntityFinder.findCountryByName(game.getGameMap(), occupation.getSource().getName().toLowerCase());
+        if(null == source) {
+            return new InvalidCommandExec(response.setMessage("Source existiert nicht!"));
+        }
+        Country target = GameEntityFinder.findCountryByName(game.getGameMap(), occupation.getTarget().getName().toLowerCase());
+        if(null == target) {
+            return new InvalidCommandExec(response.setMessage("Target existiert nicht!"));
+        }
         if(source.getTroopCount() <= countTroops + 1) {
             return new InvalidCommandExec(response.setMessage("Nicht genügend Truppen!"));
         }
-        Country target = GameEntityFinder.findCountryByName(game.getGameMap(), occupation.getTarget().getName());
-        response.setStatus(Status.SUCCESS);
-        return new MoveTroopsExec(game, source, target, countTroops, response);
+        return new MoveTroopsExec(game, source, target, countTroops, response.setStatus(Status.SUCCESS));
     }
 }

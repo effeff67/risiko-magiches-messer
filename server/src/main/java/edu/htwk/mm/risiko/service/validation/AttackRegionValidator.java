@@ -24,7 +24,7 @@ public class AttackRegionValidator implements CommandValidator {
     public CommandExecutor validate(Game game) {
         Object targetCountryName = command.getCommandDetails().get("targetCountry");
         Object sourceCountryName = command.getCommandDetails().get("sourceCountry");
-        Integer troopCount = (Integer) command.getCommandDetails().get("troopCount");
+        Integer troopCount = Integer.parseInt((String) command.getCommandDetails().get("troopCount"));
         if(null == targetCountryName) {
             response.setMessage("Das attackierte Land muss bekannt sein!");
             return new InvalidCommandExec(response);

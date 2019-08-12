@@ -3,6 +3,7 @@ package edu.htwk.mm.risiko.service.execution;
 import edu.htwk.mm.risiko.model.Continent;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Player;
+import edu.htwk.mm.risiko.model.Turns;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class RecruitTroopsExec implements CommandExecutor {
             bonus = 3;
         }
         player.setInactiveTroops(player.getInactiveTroops() + bonus);
+        game.getActiveTurns().remove(Turns.RECRUIT_TROOPS);
         return response.setMessage("Truppen rekrutiert");
     }
 }

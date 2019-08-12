@@ -24,7 +24,7 @@ public class MoveTroopValidator implements CommandValidator {
     public CommandExecutor validate(Game game) {
         Object targetCountryName = command.getCommandDetails().get("targetCountry");
         Object sourceCountryName = command.getCommandDetails().get("sourceCountry");
-        Integer troopCount = (Integer) command.getCommandDetails().get("troopCount");
+        Integer troopCount = Integer.parseInt((String)command.getCommandDetails().get("troopCount"));
         if(null == targetCountryName) {
             response.setMessage("Das  Zielland muss bekannt sein!");
             return new InvalidCommandExec(response);
@@ -35,8 +35,7 @@ public class MoveTroopValidator implements CommandValidator {
         }
         Country target = GameEntityFinder.findCountryByName(game.getGameMap(), targetCountryName.toString());
         if(null == target) {
-            response.setMessage("Das Zielland muss auf der Karte sein!");
-            return new InvalidCommandExec(response);
+            return new InvalidCommandExec(response.setMessage("Das Zielland muss auf der Karte sein!"));
         }
         Country source = GameEntityFinder.findCountryByName(game.getGameMap(), sourceCountryName.toString());
         if(null == source) {
@@ -51,8 +50,8 @@ public class MoveTroopValidator implements CommandValidator {
             response.setMessage("Das Ursprungsland musst du erstmal besetzen!");
             return new InvalidCommandExec(response);
         }
-        if(target.getHolder() == command.getPlayer().getColor()) {
-            response.setMessage("Das Zielland hast du schon besetzt!");
+        if(target.getHolder() != command.getPlayer().getColor()) {
+            response.setMessage("Das Zielland musst du erst noch besetzen!");
             return new InvalidCommandExec(response);
         }
         if(source.getTroopCount() - troopCount < 1) {

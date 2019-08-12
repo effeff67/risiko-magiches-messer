@@ -29,6 +29,7 @@ public class Game {
 	private List<Cards> cards;
 	private int tradeCounts;
 	private Occupation lastOccupation;
+	private List activeTurns;
 
     public Game(String gameName, Player player, GameMap gameMap, boolean conquerTheWorld) {
         this.name = gameName;

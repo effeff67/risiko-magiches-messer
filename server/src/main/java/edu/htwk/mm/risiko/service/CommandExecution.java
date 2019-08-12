@@ -5,6 +5,7 @@ import edu.htwk.mm.risiko.service.validation.AddPlayerValidator;
 import edu.htwk.mm.risiko.service.validation.AttackRegionValidator;
 import edu.htwk.mm.risiko.service.validation.CommandValidator;
 import edu.htwk.mm.risiko.service.validation.DrawCardValidator;
+import edu.htwk.mm.risiko.service.validation.FinishTurnValidator;
 import edu.htwk.mm.risiko.service.validation.InvalidCommandValidation;
 import edu.htwk.mm.risiko.service.validation.MoveTroopAfterOccupationValidation;
 import edu.htwk.mm.risiko.service.validation.MoveTroopValidator;
@@ -23,6 +24,7 @@ public class CommandExecution {
             case ADD_PLAYER: return new AddPlayerValidator(commandRequest);
             case ATTACK_REGION: return new AttackRegionValidator(commandRequest);
             case DRAW_CARD: return new DrawCardValidator(commandRequest);
+            case FINISH_TURN: return new FinishTurnValidator(commandRequest);
             case MOVE_TROOPS: return new MoveTroopValidator(commandRequest);
             case MOVE_TROOP_INTO_OCCUPIED_COUNTRY: return new MoveTroopAfterOccupationValidation(commandRequest);
             case PLACE_TROOP: return new PlaceTroopValidator(commandRequest);

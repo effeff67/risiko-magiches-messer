@@ -3,8 +3,11 @@ package edu.htwk.mm.risiko.service.execution;
 import edu.htwk.mm.risiko.model.Country;
 import edu.htwk.mm.risiko.model.Game;
 import edu.htwk.mm.risiko.model.Player;
+import edu.htwk.mm.risiko.model.Turns;
 import edu.htwk.mm.risiko.model.api.GameChangeResponse;
 import edu.htwk.mm.risiko.service.util.CircularPlayerIterator;
+
+import java.util.Arrays;
 
 import static edu.htwk.mm.risiko.model.Status.SUCCESS;
 
@@ -30,6 +33,7 @@ public class PlaceTroopExec implements CommandExecutor {
         if(game.getPlayers().stream().allMatch(p -> p.getInactiveTroops() == 0)) {
             game.setReady(true);
             game.setActivePlayer(iter.next().getColor());
+            game.setActiveTurns(Arrays.asList(Turns.values()));
         } else {
             do {
                 Player next = iter.next();

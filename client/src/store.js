@@ -11,18 +11,21 @@ export default new Vuex.Store({
             localStorage.setItem('riskServerRoot', host + ':1301/mm-risiko')
         },
         setGame (state, game) {
-            state.game = game
-            localStorage.setItem('game',  JSON.stringify(game));
+            if (game) {
+                state.game = game
+                localStorage.setItem('game', JSON.stringify(game))
+            }
         },
         setPlayer (state, player) {
-            state.player = player;
-            localStorage.setItem('player',  JSON.stringify(player));
+            state.player = player
+            localStorage.setItem('player', JSON.stringify(player))
         },
         setFailure (state, failure) {
             state.failure = failure
         },
-        regionClicked(state, region){
-            state.lastClickedRegion = region;
+        regionClicked (state, region) {
+            state.previousClickedRegion = state.lastClickedRegion
+            state.lastClickedRegion = region
         },
         removeGame: state => state.game = null,
     },
@@ -47,7 +50,7 @@ export default new Vuex.Store({
                 if (json && 'SUCCESS' === json.status) {
                     console.log(JSON.stringify(json), options.gameName)
                     this.dispatch('loadGame', options.gameName)
-                }else {
+                } else {
                     console.error('kein json oder ohne success')
                 }
 
@@ -56,10 +59,10 @@ export default new Vuex.Store({
             })
         },
         loadGame: function (state, name) {
-            if(!name) {
+            if (!name) {
                 throw new Error('kein name für game gefunden')
             }
-            HttpClient.requestClient(this.state.riskServerRoot + '/games/' + name , {
+            HttpClient.requestClient(this.state.riskServerRoot + '/games/' + name, {
                 method: 'GET',
                 headers: { 'Content-type': 'application/json' },
             }).then(json => {
@@ -77,7 +80,7 @@ export default new Vuex.Store({
                 this.commit('setPlayer', options.request.player)
                 if (json && 'SUCCESS' === json.status) {
                     this.dispatch('loadGame', options.gameName)
-                }else {
+                } else {
                     console.error('kein json oder ohne success')
                 }
             }).catch(reason => {
@@ -96,16 +99,17 @@ export default new Vuex.Store({
                 this.commit('setFailure', reason)
             })
         },
-        reloadGame: function(state, options) {
-            this.dispatch('loadGame', this.state.game.name);
+        reloadGame: function (state, options) {
+            this.dispatch('loadGame', this.state.game.name)
         }
     },
     state: {
-        riskServerRoot: localStorage.getItem('riskServerRoot') || '',
+        riskServerRoot: localStorage.getItem('riskServerRoot') || '',
         game: JSON.parse(localStorage.getItem('game')),
         player: JSON.parse(localStorage.getItem('player')),
         failure: '',
         lastClickedRegion: null,
+        previousClickedRegion: null,
 
     },
 })

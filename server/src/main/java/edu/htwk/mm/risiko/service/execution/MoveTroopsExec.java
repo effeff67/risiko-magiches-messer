@@ -25,9 +25,9 @@ public class MoveTroopsExec implements CommandExecutor {
     public GameChangeResponse execute() {
         source.setTroopCount(source.getTroopCount() - movingTroopCount);
         target.setTroopCount(target.getTroopCount() + movingTroopCount);
-        response.setMessage(String.format("%s Truppen erfolgreich von %s nach %s bewegt.", movingTroopCount,
+        return response.setMessage(String.format("%s Truppen erfolgreich von %s nach %s bewegt.", movingTroopCount,
                 source.getRegion().getName(),
                 target.getRegion().getName()));
-        return response;
+
     }
 }

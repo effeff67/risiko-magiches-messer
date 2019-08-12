@@ -24,15 +24,15 @@ public class PlaceTroopsValidator implements CommandValidator {
     @Override
     public CommandExecutor validate(Game game) {
         Object countryName = command.getCommandDetails().get("country");
-        Integer troopCount = (Integer) command.getCommandDetails().get("troopCount");
+        Integer troopCount = Integer.parseInt((String)command.getCommandDetails().get("troopCount"));
         Country country = GameEntityFinder.findCountryByName(game.getGameMap(), countryName.toString());
-        if (country.getHolder() == command.getPlayer().getColor()) {
-            return new InvalidCommandExec(response.setMessage("Du kontrollierst das gewählte Land nicht."));
-        }
-        if (troopCount > command.getPlayer().getInactiveTroops()) {
-            return new InvalidCommandExec(response.setMessage("Du besitzt nicht genügend Truppen."));
+        if (country.getHolder() != command.getPlayer().getColor()) {
+            return new InvalidCommandExec(response.setMessage(String.format("Du kontrollierst das gewählte Land %s nicht.", countryName)));
         }
         Player player = GameEntityFinder.findPlayerByColor(game, command.getPlayer().getColor());
+        if (troopCount > player.getInactiveTroops()) {
+            return new InvalidCommandExec(response.setMessage("Du besitzt nicht genügend Truppen."));
+        }
         return new PlaceTroopsExec(game, response.setStatus(Status.SUCCESS), player, country, troopCount);
     }
 }

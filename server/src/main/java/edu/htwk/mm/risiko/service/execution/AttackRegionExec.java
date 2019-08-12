@@ -34,7 +34,7 @@ public class AttackRegionExec implements CommandExecutor {
     @Override
     public GameChangeResponse execute() {
         int offenceDiceCount = Math.min(troopCount, 3);
-        int defenseDiceCount = Math.min(source.getTroopCount(), 2);
+        int defenseDiceCount = Math.min(target.getTroopCount(), 2);
         int defenceLostCount = 0;
         int offenceLostCount = 0;
 
@@ -60,7 +60,7 @@ public class AttackRegionExec implements CommandExecutor {
             if(target.getTroopCount() == 0) break;
         }
 
-        if(source.getTroopCount() > 0){
+        if(target.getTroopCount() > 0){
             response.setMessage(String.format("Das Gebiet %s konnte nicht eingenommen werden. Der Angreifer verliert %s Truppen und der Verteidiger %s Truppen.",
                     target.getRegion().getName(), offenceLostCount, defenceLostCount));
         } else {
