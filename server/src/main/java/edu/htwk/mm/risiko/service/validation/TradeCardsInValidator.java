@@ -47,7 +47,7 @@ public class TradeCardsInValidator implements CommandValidator {
         if(!cards.stream().allMatch( card -> player.getCards().stream().anyMatch(pc -> pc == card))) {
             return new InvalidCommandExec(response.setMessage("Du musst auch die Karte besitzen, die du tauschen willst!"));
         }
-        return new TradeCardsInExec(game, player, cards, response);
+        return new TradeCardsInExec(game, player, cards, response.setStatus(Status.SUCCESS));
     }
 
     private boolean checkCardDiversity(List<Cards> cards) {

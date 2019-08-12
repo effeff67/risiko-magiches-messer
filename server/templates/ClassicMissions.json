@@ -2,7 +2,7 @@
   "name": "ClassicMissions",
   "missionList": [
     {
-      "name": "Eliminieren Sie den blauen Spieler.",
+      "name": "Eliminiere den blauen Spieler. Falls du der blaue Spieler bist oder der blaue Spieler nicht am Spiel teilnimmt, musst du stattdessen 24 Gebiete erobern.",
       "mission": "ELIMINATE_BLUE",
       "targetPlayer": "BLUE",
       "targetContinentA": null,
@@ -10,7 +10,7 @@
       "countryCount": null
     },
     {
-      "name": "Eliminieren Sie den grünen Spieler.",
+      "name": "Eliminiere den grünen Spieler. Falls du der grüne Spieler bist oder der grüne Spieler nicht am Spiel teilnimmt, musst du stattdessen 24 Gebiete erobern.",
       "mission": "ELIMINATE_GREEN",
       "targetPlayer": "GREEN",
       "targetContinentA": null,
@@ -18,7 +18,7 @@
       "countryCount": null
     },
     {
-      "name": "Eliminieren Sie den roten Spieler.",
+      "name": "Eliminiere den roten Spieler. Falls du der rote Spieler bist oder der rote Spieler nicht am Spiel teilnimmt, musst du stattdessen 24 Gebiete erobern.",
       "mission": "ELIMINATE_RED",
       "targetPlayer": "RED",
       "targetContinentA": null,
@@ -26,7 +26,7 @@
       "countryCount": null
     },
     {
-      "name": "Eliminieren Sie den violetten Spieler.",
+      "name": "Eliminiere den violetten Spieler. Falls du der violette Spieler bist oder der violetten Spieler nicht am Spiel teilnimmt, musst du stattdessen 24 Gebiete erobern.",
       "mission": "ELIMINATE_VIOLET",
       "targetPlayer": "VIOLET",
       "targetContinentA": null,
@@ -34,7 +34,7 @@
       "countryCount": null
     },
     {
-      "name": "Eliminieren Sie den gelben Spieler.",
+      "name": "Eliminiere den gelben Spieler. Falls du der gelbe Spieler bist oder der gelbe Spieler nicht am Spiel teilnimmt, musst du stattdessen 24 Gebiete erobern.",
       "mission": "ELIMINATE_YELLOW",
       "targetPlayer": "YELLOW",
       "targetContinentA": null,
@@ -42,7 +42,7 @@
       "countryCount": null
     },
     {
-      "name": "Erobern Sie Nordamerika und Afrika.",
+      "name": "Erobern Sie sowohl Nordamerika als auch Afrika.",
       "mission": "CONQUER_NA_AFRICA",
       "targetPlayer": null,
       "targetContinentA": "Nordamerika",
@@ -50,7 +50,7 @@
       "countryCount": null
     },
     {
-      "name": "Erobern Sie Nordamerika und Australien.",
+      "name": "Erobern Sie sowohl Nordamerika als auch Australien.",
       "mission": "CONQUER_NA_AUSTRALIA",
       "targetPlayer": null,
       "targetContinentA": "Nordamerika",
@@ -58,7 +58,7 @@
       "countryCount": null
     },
     {
-      "name": "Erobern Sie Asien und Südamerika.",
+      "name": "Erobern Sie sowohl Asien als auch Südamerika.",
       "mission": "CONQUER_ASIA_SA",
       "targetPlayer": null,
       "targetContinentA": "Asien",
@@ -66,7 +66,7 @@
       "countryCount": null
     },
     {
-      "name": "Erobern Sie Europa und Australien.",
+      "name": "Erobern Sie sowohl Europa als auch Australien.",
       "mission": "CONQUER_EUROPE_AUSTRALIA",
       "targetPlayer": null,
       "targetContinentA": "Europa",
@@ -74,7 +74,7 @@
       "countryCount": null
     },
     {
-      "name": "Erobern Sie Asien udn Afrika.",
+      "name": "Erobern Sie sowohl Asien als auch Afrika.",
       "mission": "CONQUER_ASIA_AFRICA",
       "targetPlayer": null,
       "targetContinentA": "Asien",
@@ -82,15 +82,7 @@
       "countryCount": null
     },
     {
-      "name": "Erobern Sie die ganze Welt.",
-      "mission": "CONQUER_THE_WORLD",
-      "targetPlayer": null,
-      "targetContinentA": null,
-      "targetContinentB": null,
-      "countryCount": 42
-    },
-    {
-      "name": "Erobern Sie 24 Gebiete Ihrer Wahl.",
+      "name": "Erobern Sie 24 beliebige Gebiete.",
       "mission": "CONQUER_24",
       "targetPlayer": null,
       "targetContinentA": null,
@@ -98,7 +90,7 @@
       "countryCount": 24
     },
     {
-      "name": "Erobern Sie 18 Gebiete Ihrer Wahl und besetzen Sie jedes mit mindestens 2 Einheiten",
+      "name": "Erobern Sie 18 beliebige Gebiete und besetzen Sie jedes mit mindestens 2 Einheiten",
       "mission": "CONQUER_18",
       "targetPlayer": null,
       "targetContinentA": null,
